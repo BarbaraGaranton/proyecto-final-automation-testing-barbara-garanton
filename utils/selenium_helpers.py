@@ -4,7 +4,7 @@ import logging
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # Datos del sitio bajo prueba
@@ -110,3 +110,30 @@ def ir_al_carrito(driver):
     """Entra al carrito de compras desde el ícono del encabezado."""
     hacer_clic(driver, (By.CLASS_NAME, "shopping_cart_link"))
     esperar_url(driver, "/cart.html")
+
+
+def obtener_mensaje_error(driver):
+    """Devuelve el mensaje de error que muestra el formulario de login."""
+    mensaje = esperar_visible(driver, (By.CSS_SELECTOR, "[data-test='error']")).text
+    logger.info("Mensaje de error mostrado: %s", mensaje)
+    return mensaje
+
+
+def ordenar_productos(driver, opcion):
+    """Ordena el catálogo con el filtro. Opciones: 'az', 'za', 'lohi', 'hilo'."""
+    logger.info("Ordenando los productos con la opción '%s'", opcion)
+    filtro = esperar_visible(driver, (By.CLASS_NAME, "product_sort_container"))
+    Select(filtro).select_by_value(opcion)
+
+
+def obtener_precios(driver):
+    """Devuelve los precios del catálogo como números, en el orden en que se ven."""
+    precios = driver.find_elements(By.CLASS_NAME, "inventory_item_price")
+    return [float(precio.text.replace("$", "")) for precio in precios]
+
+
+def cerrar_sesion(driver):
+    """Abre el menú lateral y hace clic en Logout."""
+    logger.info("Cerrando la sesión desde el menú")
+    hacer_clic(driver, (By.ID, "react-burger-menu-btn"))
+    hacer_clic(driver, (By.ID, "logout_sidebar_link"))
