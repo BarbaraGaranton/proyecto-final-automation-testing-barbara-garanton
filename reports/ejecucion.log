@@ -1,37 +1,82 @@
-2026-10-09 14:24:23 [INFO] Iniciando el navegador Chrome
-2026-10-09 14:24:30 [INFO] Abriendo https://www.saucedemo.com/
-2026-10-09 14:24:31 [INFO] Iniciando sesión con el usuario 'standard_user'
-2026-10-09 14:24:33 [INFO] Clic en el elemento ('id', 'login-button')
-2026-10-09 14:24:33 [INFO] URL actual: https://www.saucedemo.com/inventory.html
-2026-10-09 14:24:33 [INFO] Cerrando el navegador
-2026-10-09 14:24:36 [INFO] Iniciando el navegador Chrome
-2026-10-09 14:24:39 [INFO] Abriendo https://www.saucedemo.com/
-2026-10-09 14:24:40 [INFO] Iniciando sesión con el usuario 'standard_user'
-2026-10-09 14:24:41 [INFO] Clic en el elemento ('id', 'login-button')
-2026-10-09 14:24:42 [INFO] URL actual: https://www.saucedemo.com/inventory.html
-2026-10-09 14:24:42 [INFO] Primer producto: Sauce Labs Backpack - Precio: $29.99
-2026-10-09 14:24:42 [INFO] Cerrando el navegador
-2026-10-09 14:24:46 [INFO] Iniciando el navegador Chrome
-2026-10-09 14:24:49 [INFO] Abriendo https://www.saucedemo.com/
-2026-10-09 14:24:50 [INFO] Iniciando sesión con el usuario 'standard_user'
-2026-10-09 14:24:51 [INFO] Clic en el elemento ('id', 'login-button')
-2026-10-09 14:24:52 [INFO] URL actual: https://www.saucedemo.com/inventory.html
-2026-10-09 14:24:52 [INFO] Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-10-09 14:24:52 [INFO] Clic en el elemento ('class name', 'shopping_cart_link')
-2026-10-09 14:24:52 [INFO] URL actual: https://www.saucedemo.com/cart.html
-2026-10-09 14:24:52 [INFO] Cerrando el navegador
-2026-10-09 14:24:55 [INFO] Iniciando el navegador Chrome
-2026-10-09 14:24:58 [INFO] Abriendo https://www.saucedemo.com/
-2026-10-09 14:24:59 [INFO] Iniciando sesión con el usuario 'standard_user'
-2026-10-09 14:24:59 [INFO] Clic en el elemento ('id', 'login-button')
-2026-10-09 14:25:00 [INFO] URL actual: https://www.saucedemo.com/inventory.html
-2026-10-09 14:25:00 [INFO] Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-10-09 14:25:00 [INFO] Clic en el elemento ('class name', 'shopping_cart_link')
-2026-10-09 14:25:01 [INFO] URL actual: https://www.saucedemo.com/cart.html
-2026-10-09 14:25:01 [INFO] Clic en el elemento ('id', 'checkout')
-2026-10-09 14:25:01 [INFO] URL actual: https://www.saucedemo.com/checkout-step-one.html
-2026-10-09 14:25:01 [INFO] Clic en el elemento ('id', 'continue')
-2026-10-09 14:25:04 [INFO] URL actual: https://www.saucedemo.com/checkout-step-two.html
-2026-10-09 14:25:04 [INFO] Clic en el elemento ('id', 'finish')
-2026-10-09 14:25:05 [INFO] URL actual: https://www.saucedemo.com/checkout-complete.html
-2026-10-09 14:25:05 [INFO] Cerrando el navegador
+2026-10-09 14:49:34 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:49:46 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:49:48 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:49:49 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:49:50 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:49:51 [INFO] Cerrando el navegador
+2026-10-09 14:50:01 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:08 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:50:09 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:50:10 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:50:11 [INFO] Mensaje de error mostrado: Epic sadface: Username and password do not match any user in this service
+2026-10-09 14:50:11 [INFO] Cerrando el navegador
+2026-10-09 14:50:14 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:17 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:50:18 [INFO] Iniciando sesión con el usuario 'locked_out_user'
+2026-10-09 14:50:19 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:50:19 [INFO] Mensaje de error mostrado: Epic sadface: Sorry, this user has been locked out.
+2026-10-09 14:50:19 [INFO] Cerrando el navegador
+2026-10-09 14:50:22 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:25 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:50:26 [INFO] Iniciando sesión con el usuario ''
+2026-10-09 14:50:26 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:50:27 [INFO] Mensaje de error mostrado: Epic sadface: Username is required
+2026-10-09 14:50:27 [INFO] Cerrando el navegador
+2026-10-09 14:50:30 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:32 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:50:34 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:50:34 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:50:35 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:50:35 [INFO] Cerrando la sesión desde el menú
+2026-10-09 14:50:35 [INFO] Clic en el elemento ('id', 'react-burger-menu-btn')
+2026-10-09 14:50:35 [INFO] Clic en el elemento ('id', 'logout_sidebar_link')
+2026-10-09 14:50:36 [INFO] Cerrando el navegador
+2026-10-09 14:50:39 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:42 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:50:43 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:50:43 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:50:44 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:50:44 [INFO] Primer producto: Sauce Labs Backpack - Precio: $29.99
+2026-10-09 14:50:44 [INFO] Cerrando el navegador
+2026-10-09 14:50:47 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:50 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:50:51 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:50:51 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:50:52 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:50:52 [INFO] Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-10-09 14:50:53 [INFO] Clic en el elemento ('class name', 'shopping_cart_link')
+2026-10-09 14:50:53 [INFO] URL actual: https://www.saucedemo.com/cart.html
+2026-10-09 14:50:53 [INFO] Cerrando el navegador
+2026-10-09 14:50:57 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:50:59 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:51:01 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:51:01 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:51:02 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:51:02 [INFO] Ordenando los productos con la opción 'lohi'
+2026-10-09 14:51:02 [INFO] Precios ordenados: [7.99, 9.99, 15.99, 15.99, 29.99, 49.99]
+2026-10-09 14:51:02 [INFO] Cerrando el navegador
+2026-10-09 14:51:06 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:51:09 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:51:10 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:51:11 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:51:11 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:51:11 [INFO] Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-10-09 14:51:11 [INFO] Clic en el elemento ('class name', 'shopping_cart_link')
+2026-10-09 14:51:12 [INFO] URL actual: https://www.saucedemo.com/cart.html
+2026-10-09 14:51:12 [INFO] Clic en el elemento ('css selector', 'button.cart_button')
+2026-10-09 14:51:12 [INFO] Cerrando el navegador
+2026-10-09 14:51:15 [INFO] Iniciando el navegador Chrome
+2026-10-09 14:51:19 [INFO] Abriendo https://www.saucedemo.com/
+2026-10-09 14:51:23 [INFO] Iniciando sesión con el usuario 'standard_user'
+2026-10-09 14:51:24 [INFO] Clic en el elemento ('id', 'login-button')
+2026-10-09 14:51:25 [INFO] URL actual: https://www.saucedemo.com/inventory.html
+2026-10-09 14:51:25 [INFO] Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-10-09 14:51:26 [INFO] Clic en el elemento ('class name', 'shopping_cart_link')
+2026-10-09 14:51:26 [INFO] URL actual: https://www.saucedemo.com/cart.html
+2026-10-09 14:51:26 [INFO] Clic en el elemento ('id', 'checkout')
+2026-10-09 14:51:29 [INFO] URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-10-09 14:51:30 [INFO] Clic en el elemento ('id', 'continue')
+2026-10-09 14:51:32 [INFO] URL actual: https://www.saucedemo.com/checkout-step-two.html
+2026-10-09 14:51:32 [INFO] Clic en el elemento ('id', 'finish')
+2026-10-09 14:51:32 [INFO] URL actual: https://www.saucedemo.com/checkout-complete.html
+2026-10-09 14:51:33 [INFO] Cerrando el navegador
