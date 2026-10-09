@@ -50,7 +50,7 @@ Cada test abre y cierra su propio navegador, por lo que son independientes entre
 Requisitos previos: Python 3 y Google Chrome instalados.
 
 ```bash
-git clone https://github.com/USUARIO/pre-entrega-automation-testing-barbara-garanton.git
+git clone https://github.com/BarbaraGaranton/pre-entrega-automation-testing-barbara-garanton.git
 cd pre-entrega-automation-testing-barbara-garanton
 python -m venv .venv
 .venv\Scripts\activate
