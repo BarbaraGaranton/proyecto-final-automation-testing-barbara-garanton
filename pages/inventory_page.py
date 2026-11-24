@@ -63,6 +63,11 @@ class InventoryPage(BasePage):
         logger.info("Ordenando los productos con la opción '%s'", opcion)
         Select(self.esperar_visible(self.FILTRO_ORDEN)).select_by_value(opcion)
 
+    def obtener_imagenes(self):
+        """Devuelve el nombre de archivo de la imagen de cada producto."""
+        imagenes = self.driver.find_elements(By.CSS_SELECTOR, "img.inventory_item_img")
+        return [imagen.get_attribute("src").split("/")[-1] for imagen in imagenes]
+
     def elementos_principales_visibles(self):
         """Devuelve True si se ven el menú, el filtro de orden y el carrito."""
         return all(
