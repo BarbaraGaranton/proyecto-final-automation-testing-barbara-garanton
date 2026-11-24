@@ -34,7 +34,7 @@ def entrar_como(driver, usuario):
     return inventario
 
 
-# Cada producto debe mostrar su propia imagen
+# CP-26 y CP-27: cada producto debe mostrar su propia imagen
 @pytest.mark.parametrize(
     "usuario",
     [
@@ -50,7 +50,7 @@ def test_imagenes_de_productos(driver, usuario):
     assert not any("sl-404" in imagen for imagen in imagenes), "Hay imágenes de error 404"
 
 
-# El filtro Z-A debe ordenar los productos sin errores
+# CP-28 y CP-29: el filtro Z-A debe ordenar los productos sin errores
 @pytest.mark.parametrize(
     "usuario",
     [
@@ -69,7 +69,7 @@ def test_ordenar_z_a(driver, usuario):
     assert nombres == sorted(nombres, reverse=True)
 
 
-# Se deben poder agregar los 6 productos al carrito
+# CP-30 y CP-31: se deben poder agregar los 6 productos al carrito
 @pytest.mark.parametrize(
     "usuario",
     [
@@ -81,13 +81,14 @@ def test_agregar_todos_los_productos(driver, usuario):
     inventario = entrar_como(driver, usuario)
 
     nombres = inventario.obtener_nombres()
+    assert len(nombres) == 6, f"El catálogo debería tener 6 productos y tiene {len(nombres)}"
     for nombre in nombres:
         inventario.agregar_producto_por_nombre(nombre)
 
     assert inventario.obtener_contador_carrito() == len(nombres)
 
 
-# El formulario de checkout debe guardar lo que escribe el usuario y completar la compra
+# CP-32 y CP-33: el checkout debe guardar lo que escribe el usuario y completar la compra
 @pytest.mark.parametrize(
     "usuario",
     [
@@ -108,7 +109,7 @@ def test_checkout_con_usuario_especial(driver, usuario):
     assert confirmacion.obtener_mensaje_confirmacion() == "Thank you for your order!"
 
 
-# Criterio no funcional: el login no debe tardar más de 3 segundos
+# CP-34 y CP-35: criterio no funcional, el login no debe tardar más de 3 segundos
 @pytest.mark.parametrize(
     "usuario",
     [
