@@ -1,0 +1,14 @@
+[
+  {
+    "id": "un_producto",
+    "productos": ["Sauce Labs Backpack"]
+  },
+  {
+    "id": "dos_productos",
+    "productos": ["Sauce Labs Bike Light", "Sauce Labs Onesie"]
+  },
+  {
+    "id": "tres_productos",
+    "productos": ["Sauce Labs Bolt T-Shirt", "Sauce Labs Fleece Jacket", "Test.allTheThings() T-Shirt (Red)"]
+  }
+]
