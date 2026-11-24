@@ -34,4 +34,10 @@ def crear_driver():
         },
     )
     logger.info("Iniciando el navegador Chrome (headless=%s)", HEADLESS)
-    return webdriver.Chrome(options=opciones)
+    try:
+        return webdriver.Chrome(options=opciones)
+    except Exception as error:
+        # Si la PC está muy cargada Chrome puede tardar demasiado en abrir:
+        # se reintenta una vez antes de dar el test por fallido
+        logger.warning("Chrome no pudo iniciar (%s). Reintentando una vez...", type(error).__name__)
+        return webdriver.Chrome(options=opciones)
