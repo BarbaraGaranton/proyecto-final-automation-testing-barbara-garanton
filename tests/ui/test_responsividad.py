@@ -44,6 +44,7 @@ def capturar(driver, dispositivo, pagina):
     driver.save_screenshot(str(CARPETA_RESPONSIVIDAD / f"{dispositivo}_{pagina}.png"))
 
 
+# CP-23 a CP-25: responsividad en Desktop, Tablet y Móvil
 @pytest.mark.parametrize("dispositivo, ancho, alto, movil", BREAKPOINTS)
 def test_responsividad(driver, dispositivo, ancho, alto, movil):
     emular_pantalla(driver, ancho, alto, movil)
