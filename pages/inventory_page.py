@@ -32,11 +32,17 @@ class InventoryPage(BasePage):
         return nombre, precio
 
     def obtener_nombres(self):
-        """Devuelve los nombres de todos los productos, en el orden en que se ven."""
+        """Devuelve los nombres de todos los productos, en el orden en que se ven.
+
+        Primero espera a que los productos estén visibles: si se leyera la lista
+        antes de que cargue, volvería vacía y el test podría pasar sin validar nada.
+        """
+        self.obtener_productos()
         return [elemento.text for elemento in self.driver.find_elements(*self.NOMBRE_PRODUCTO)]
 
     def obtener_precios(self):
         """Devuelve los precios del catálogo como números, en el orden en que se ven."""
+        self.obtener_productos()
         precios = self.driver.find_elements(*self.PRECIO_PRODUCTO)
         return [float(precio.text.replace("$", "")) for precio in precios]
 
@@ -62,6 +68,11 @@ class InventoryPage(BasePage):
         """Ordena el catálogo con el filtro. Opciones: 'az', 'za', 'lohi', 'hilo'."""
         logger.info("Ordenando los productos con la opción '%s'", opcion)
         Select(self.esperar_visible(self.FILTRO_ORDEN)).select_by_value(opcion)
+
+    def obtener_imagenes(self):
+        """Devuelve el nombre de archivo de la imagen de cada producto."""
+        imagenes = self.driver.find_elements(By.CSS_SELECTOR, "img.inventory_item_img")
+        return [imagen.get_attribute("src").split("/")[-1] for imagen in imagenes]
 
     def elementos_principales_visibles(self):
         """Devuelve True si se ven el menú, el filtro de orden y el carrito."""

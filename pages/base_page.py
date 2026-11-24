@@ -2,6 +2,7 @@
 
 import logging
 
+from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -57,6 +58,21 @@ class BasePage:
         """Espera a que la URL actual contenga el fragmento indicado."""
         self.espera.until(EC.url_contains(fragmento))
         logger.info("URL actual: %s", self.driver.current_url)
+
+    def aceptar_alerta_si_existe(self):
+        """Si el sitio abrió una alerta del navegador, la acepta y devuelve su texto."""
+        try:
+            alerta = self.driver.switch_to.alert
+        except NoAlertPresentException:
+            return None
+        texto = alerta.text
+        logger.warning("El sitio mostró una alerta: %s", texto)
+        alerta.accept()
+        return texto
+
+    def leer_valor(self, localizador):
+        """Devuelve el valor escrito en un campo de texto."""
+        return self.esperar_visible(localizador).get_attribute("value")
 
     def cantidad_elementos(self, localizador):
         """Cuenta cuántos elementos hay en la página con ese localizador (sin esperar)."""

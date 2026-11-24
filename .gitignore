@@ -6,3 +6,7 @@ __pycache__/
 
 # Las capturas se generan en cada ejecución fallida
 reports/capturas/*.png
+
+# Evidencias y capturas de responsividad (se regeneran con cada ejecución)
+reports/evidencias/
+reports/responsividad/

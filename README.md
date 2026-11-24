@@ -60,7 +60,9 @@ proyecto-final-automation-testing-barbara-garanton/
 │   │   ├── test_login.py
 │   │   ├── test_inventario.py
 │   │   ├── test_carrito.py
-│   │   └── test_checkout.py
+│   │   ├── test_checkout.py
+│   │   ├── test_responsividad.py      # Desktop / Tablet / Móvil
+│   │   └── test_defectos_conocidos.py # Bugs encontrados (xfail)
 │   └── api/                   # Pruebas de API (Requests)
 │       ├── conftest.py        # Fixture del cliente de API
 │       ├── test_posts_api.py
@@ -73,7 +75,10 @@ proyecto-final-automation-testing-barbara-garanton/
 ├── reports/
 │   ├── reporte.html           # Reporte HTML de la última ejecución
 │   ├── ejecucion.log          # Log de la última ejecución
-│   └── capturas/              # Capturas automáticas de los tests que fallan
+│   ├── capturas/              # Capturas automáticas de los tests que fallan
+│   ├── evidencias/            # Capturas de cada test (con --evidencias)
+│   └── responsividad/         # Capturas Desktop / Tablet / Móvil
+├── docs/                      # Documento de entrega final (Word y PDF)
 ├── conftest.py                # Fixtures del navegador, capturas y hooks del reporte
 ├── pytest.ini                 # Configuración de Pytest, reporte, marcadores y logs
 ├── requirements.txt           # Dependencias con versiones fijas
@@ -112,8 +117,11 @@ Page Object y todos los tests siguen funcionando.
 
 ## Casos de prueba
 
-Total: **33 tests** (22 de UI y 11 de API). Cada caso parametrizado aparece en el
+Total: **46 tests** (35 de UI y 11 de API). Cada caso parametrizado aparece en el
 reporte con su propio nombre, por ejemplo `test_login[usuario_bloqueado]`.
+
+El documento completo de la entrega (requerimientos, plan de pruebas, casos,
+ejecución con evidencias, bugs y métricas) está en [`docs/`](docs/).
 
 ### Pruebas de UI - SauceDemo
 
@@ -136,6 +144,24 @@ reporte con su propio nombre, por ejemplo `test_login[usuario_bloqueado]`.
 | CP-20 | `test_checkout[falta_nombre]` | `checkout.csv` | Negativo | Error "First Name is required" y no avanza |
 | CP-21 | `test_checkout[falta_apellido]` | `checkout.csv` | Negativo | Error "Last Name is required" y no avanza |
 | CP-22 | `test_checkout[falta_codigo_postal]` | `checkout.csv` | Negativo | Error "Postal Code is required" y no avanza |
+| CP-23 a CP-25 | `test_responsividad[...]` | Desktop 1920×1080, Tablet 768×1024, Móvil 390×844 | No funcional | Sin scroll horizontal y elementos clave visibles; guarda capturas en `reports/responsividad/` |
+| CP-26 a CP-33 | `test_defectos_conocidos.py` | Usuarios especiales del sitio | Exploratorio | Imágenes, orden, carrito y checkout correctos → **XFail** por los bugs BUG-001 a BUG-006 y BUG-008 |
+| CP-34 | `test_tiempo_de_login[standard_user]` | `standard_user` | No funcional | Login en 3 s o menos |
+| CP-35 | `test_tiempo_de_login[performance_glitch_user]` | `performance_glitch_user` | No funcional | Login en 3 s o menos → **XFail** por BUG-007 |
+
+### Defectos encontrados
+
+Explorando el sitio con sus usuarios especiales (`problem_user`, `error_user`,
+`visual_user` y `performance_glitch_user`) encontré 8 defectos reales: imágenes
+incorrectas, filtro de orden roto, productos que no se agregan al carrito, un
+campo del checkout que escribe en otro y un login lento.
+
+Cada defecto quedó automatizado en `tests/ui/test_defectos_conocidos.py`. El test
+verifica el comportamiento **correcto** y está marcado con `xfail` y el ID del bug.
+Así el reporte lo muestra como *XFailed* (falla esperada y conocida) sin romper
+el pipeline. Si un día el sitio corrige el defecto, el test aparece como
+*XPassed* y se sabe que el bug se puede cerrar. El detalle de cada bug está en
+el documento de `docs/`.
 
 ### Pruebas de API - JSONPlaceholder
 
@@ -208,6 +234,19 @@ pytest tests/ui/test_login.py
 pytest "tests/ui/test_login.py::test_login[usuario_bloqueado]"
 ```
 
+Sin los defectos conocidos (solo los flujos que deben pasar):
+
+```bash
+pytest -m "not defectos"
+```
+
+Guardando una captura de **cada** test de UI (no solo de los fallidos) en
+`reports/evidencias/`, útil para documentar la ejecución:
+
+```bash
+pytest --evidencias
+```
+
 Sin abrir la ventana del navegador (modo headless, como en GitHub Actions):
 
 ```bash
@@ -224,7 +263,8 @@ HEADLESS=1 pytest
 Se genera en cada ejecución y se abre con cualquier navegador.
 
 - **Resumen arriba:** cantidad de tests ejecutados, aprobados (*Passed*),
-  fallados (*Failed*), omitidos y la duración total. Se puede hacer clic en cada
+  fallados (*Failed*), fallas esperadas por defectos conocidos (*Expected
+  failures* / XFailed), omitidos y la duración total. Se puede hacer clic en cada
   estado para filtrar la tabla.
 - **Tabla de resultados:** una fila por test con su estado, nombre y duración.
   Los tests parametrizados muestran entre corchetes el caso de datos usado.
@@ -274,6 +314,7 @@ Desarrollé cada funcionalidad en su propia rama y luego la fusioné con `main`:
 | `feature/datos-de-prueba` | Archivos JSON/CSV y parametrización |
 | `feature/pruebas-api` | Cliente de API y pruebas con Requests |
 | `feature/ci-reportes` | GitHub Actions, reportes y documentación |
+| `feature/evidencias-y-defectos` | Defectos encontrados, responsividad, evidencias y documento de entrega |
 
 ## Lo que más me costó
 

@@ -1,305 +1,486 @@
-2026-11-24 16:46:05 [INFO] conftest: ========== INICIO: tests/api/test_encadenamiento_api.py::test_flujo_post_autor_y_comentarios ==========
-2026-11-24 16:46:05 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/5
-2026-11-24 16:46:07 [INFO] utils.api_client: Respuesta: 200 en 1762 ms | {   "userId": 1,   "id": 5,   "title": "nesciunt quas odio",   "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque" }
-2026-11-24 16:46:07 [INFO] tests.api.test_encadenamiento_api: El post 5 pertenece al usuario 1
-2026-11-24 16:46:07 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/users/1
-2026-11-24 16:46:07 [INFO] utils.api_client: Respuesta: 200 en 26 ms | {   "id": 1,   "name": "Leanne Graham",   "username": "Bret",   "email": "Sincere@april.biz",   "address": {     "street": "Kulas Light",     "suite": "Apt. 556",     "city": "Gwenborough",     "zipcode": "92998-3874",     "geo": {       "lat": "-37.3159",       "lng": "81.1496"     }   },   "phone"
-2026-11-24 16:46:07 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/5/comments
-2026-11-24 16:46:07 [INFO] utils.api_client: Respuesta: 200 en 16 ms | [   {     "postId": 5,     "id": 21,     "name": "aliquid rerum mollitia qui a consectetur eum sed",     "email": "Noemie@marques.me",     "body": "deleniti aut sed molestias explicabo\ncommodi odio ratione nesciunt\nvoluptate doloremque est\nnam autem error delectus"   },   {     "postId": 5,     "
-2026-11-24 16:46:07 [INFO] conftest: Resultado de test_flujo_post_autor_y_comentarios: PASÓ (1.85 s)
-2026-11-24 16:46:07 [INFO] conftest: ========== INICIO: tests/api/test_encadenamiento_api.py::test_flujo_usuario_crear_y_eliminar_post ==========
-2026-11-24 16:46:07 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/users
-2026-11-24 16:46:09 [INFO] utils.api_client: Respuesta: 200 en 1792 ms | [   {     "id": 1,     "name": "Leanne Graham",     "username": "Bret",     "email": "Sincere@april.biz",     "address": {       "street": "Kulas Light",       "suite": "Apt. 556",       "city": "Gwenborough",       "zipcode": "92998-3874",       "geo": {         "lat": "-37.3159",         "lng": "8
-2026-11-24 16:46:09 [INFO] tests.api.test_encadenamiento_api: El usuario 'Bret' tiene id 1
-2026-11-24 16:46:09 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Post del flujo encadenado", "body": "Creado para Bret", "userId": 1}
-2026-11-24 16:46:09 [INFO] utils.api_client: Respuesta: 201 en 270 ms | {   "title": "Post del flujo encadenado",   "body": "Creado para Bret",   "userId": 1,   "id": 101 }
-2026-11-24 16:46:09 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/users/1/posts
-2026-11-24 16:46:09 [INFO] utils.api_client: Respuesta: 200 en 54 ms | [   {     "userId": 1,     "id": 1,     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",     "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architect
-2026-11-24 16:46:13 [INFO] utils.api_client: DELETE https://jsonplaceholder.typicode.com/posts/1
-2026-11-24 16:46:13 [INFO] utils.api_client: Respuesta: 200 en 216 ms | {}
-2026-11-24 16:46:13 [INFO] conftest: Resultado de test_flujo_usuario_crear_y_eliminar_post: PASÓ (5.92 s)
-2026-11-24 16:46:13 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_obtener_post_existente ==========
-2026-11-24 16:46:13 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/1
-2026-11-24 16:46:14 [INFO] utils.api_client: Respuesta: 200 en 1302 ms | {   "userId": 1,   "id": 1,   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto" }
-2026-11-24 16:46:14 [INFO] conftest: Resultado de test_obtener_post_existente: PASÓ (1.31 s)
-2026-11-24 16:46:14 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_listar_posts_de_un_usuario ==========
-2026-11-24 16:46:14 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts
-2026-11-24 16:46:16 [INFO] utils.api_client: Respuesta: 200 en 1659 ms | [   {     "userId": 1,     "id": 1,     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",     "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architect
-2026-11-24 16:46:16 [INFO] conftest: Resultado de test_listar_posts_de_un_usuario: PASÓ (1.66 s)
-2026-11-24 16:46:16 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_obtener_post_inexistente ==========
-2026-11-24 16:46:16 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/99999
-2026-11-24 16:46:18 [INFO] utils.api_client: Respuesta: 404 en 1982 ms | {}
-2026-11-24 16:46:18 [INFO] conftest: Resultado de test_obtener_post_inexistente: PASÓ (1.99 s)
-2026-11-24 16:46:18 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_crear_post[post_simple] ==========
-2026-11-24 16:46:18 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Mi primer post automatizado", "body": "Creado desde el framework de QA Automation", "userId": 1}
-2026-11-24 16:46:19 [INFO] utils.api_client: Respuesta: 201 en 1289 ms | {   "title": "Mi primer post automatizado",   "body": "Creado desde el framework de QA Automation",   "userId": 1,   "id": 101 }
-2026-11-24 16:46:19 [INFO] conftest: Resultado de test_crear_post[post_simple]: PASÓ (1.29 s)
-2026-11-24 16:46:19 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_crear_post[post_con_acentos] ==========
-2026-11-24 16:46:19 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Prueba de caracteres: ñandú, acción, pingüino", "body": "Verifico que la API devuelva bien los caracteres especiales", "userId": 5}
-2026-11-24 16:46:21 [INFO] utils.api_client: Respuesta: 201 en 1747 ms | {   "title": "Prueba de caracteres: ñandú, acción, pingüino",   "body": "Verifico que la API devuelva bien los caracteres especiales",   "userId": 5,   "id": 101 }
-2026-11-24 16:46:21 [INFO] conftest: Resultado de test_crear_post[post_con_acentos]: PASÓ (1.75 s)
-2026-11-24 16:46:21 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_crear_post[post_texto_largo] ==========
-2026-11-24 16:46:21 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Post con un cuerpo extenso", "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "userId": 10}
-2026-11-24 16:46:23 [INFO] utils.api_client: Respuesta: 201 en 1983 ms | {   "title": "Post con un cuerpo extenso",   "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",   "userId": 
-2026-11-24 16:46:23 [INFO] conftest: Resultado de test_crear_post[post_texto_largo]: PASÓ (1.99 s)
-2026-11-24 16:46:23 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_actualizar_post ==========
-2026-11-24 16:46:23 [INFO] utils.api_client: PUT https://jsonplaceholder.typicode.com/posts/1 | cuerpo: {"id": 1, "userId": 1, "title": "Título actualizado", "body": "Cuerpo actualizado"}
-2026-11-24 16:46:25 [INFO] utils.api_client: Respuesta: 200 en 2466 ms | {   "id": 1,   "userId": 1,   "title": "Título actualizado",   "body": "Cuerpo actualizado" }
-2026-11-24 16:46:25 [INFO] conftest: Resultado de test_actualizar_post: PASÓ (2.49 s)
-2026-11-24 16:46:25 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_eliminar_post ==========
-2026-11-24 16:46:25 [INFO] utils.api_client: DELETE https://jsonplaceholder.typicode.com/posts/1
-2026-11-24 16:46:27 [INFO] utils.api_client: Respuesta: 200 en 1818 ms | {}
-2026-11-24 16:46:27 [INFO] conftest: Resultado de test_eliminar_post: PASÓ (1.82 s)
-2026-11-24 16:46:27 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_endpoint_inexistente ==========
-2026-11-24 16:46:27 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/ruta-que-no-existe
-2026-11-24 16:46:29 [INFO] utils.api_client: Respuesta: 404 en 1960 ms | {}
-2026-11-24 16:46:29 [INFO] conftest: Resultado de test_endpoint_inexistente: PASÓ (1.96 s)
-2026-11-24 16:46:29 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_agregar_productos_carrito[un_producto] ==========
-2026-11-24 16:46:29 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:46:58 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:47:01 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:47:04 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:47:06 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:47:06 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:47:06 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:47:06 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:47:07 [INFO] conftest: Resultado de test_agregar_productos_carrito[un_producto]: PASÓ (0.92 s)
-2026-11-24 16:47:07 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:47:11 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_agregar_productos_carrito[dos_productos] ==========
-2026-11-24 16:47:11 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:47:31 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:47:33 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:47:34 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:47:35 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:47:35 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bike Light'
-2026-11-24 16:47:36 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Onesie'
-2026-11-24 16:47:36 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:47:36 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:47:36 [INFO] conftest: Resultado de test_agregar_productos_carrito[dos_productos]: PASÓ (1.64 s)
-2026-11-24 16:47:36 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:47:39 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_agregar_productos_carrito[tres_productos] ==========
-2026-11-24 16:47:39 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:47:49 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:47:51 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:47:52 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:47:54 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:47:54 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bolt T-Shirt'
-2026-11-24 16:47:55 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Fleece Jacket'
-2026-11-24 16:47:55 [INFO] pages.inventory_page: Agregando al carrito el producto 'Test.allTheThings() T-Shirt (Red)'
-2026-11-24 16:47:56 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:47:56 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:47:56 [INFO] conftest: Resultado de test_agregar_productos_carrito[tres_productos]: PASÓ (2.66 s)
-2026-11-24 16:47:56 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:47:59 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_quitar_producto_carrito ==========
-2026-11-24 16:47:59 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:48:05 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:48:09 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:48:10 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:48:11 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:48:11 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:48:11 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:48:12 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:48:12 [INFO] pages.cart_page: Quitando el primer producto del carrito
-2026-11-24 16:48:12 [INFO] pages.base_page: Clic en el elemento ('css selector', 'button.cart_button')
-2026-11-24 16:48:12 [INFO] conftest: Resultado de test_quitar_producto_carrito: PASÓ (1.19 s)
-2026-11-24 16:48:12 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:48:16 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[datos_completos] ==========
-2026-11-24 16:48:16 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:48:18 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:48:20 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:48:20 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:48:21 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:48:21 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:48:21 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:48:21 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:48:21 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
-2026-11-24 16:48:22 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
-2026-11-24 16:48:22 [INFO] pages.checkout_page: Completando datos: 'John' 'Doe' '12345'
-2026-11-24 16:48:22 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
-2026-11-24 16:48:22 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-two.html
-2026-11-24 16:48:23 [INFO] pages.base_page: Clic en el elemento ('id', 'finish')
-2026-11-24 16:48:23 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-complete.html
-2026-11-24 16:48:23 [INFO] conftest: Resultado de test_checkout[datos_completos]: PASÓ (2.27 s)
-2026-11-24 16:48:23 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:48:25 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[datos_completos_con_acentos] ==========
-2026-11-24 16:48:25 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:48:28 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:48:29 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:48:30 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:48:30 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:48:31 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:48:31 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:48:31 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:48:31 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
-2026-11-24 16:48:32 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
-2026-11-24 16:48:32 [INFO] pages.checkout_page: Completando datos: 'María' 'Pérez' 'C1425'
-2026-11-24 16:48:33 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
-2026-11-24 16:48:34 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-two.html
-2026-11-24 16:48:34 [INFO] pages.base_page: Clic en el elemento ('id', 'finish')
-2026-11-24 16:48:35 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-complete.html
-2026-11-24 16:48:35 [INFO] conftest: Resultado de test_checkout[datos_completos_con_acentos]: PASÓ (4.11 s)
-2026-11-24 16:48:35 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:48:38 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[falta_nombre] ==========
-2026-11-24 16:48:38 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:48:41 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:48:43 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:48:44 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:48:45 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:48:46 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:48:46 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:48:46 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:48:46 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
-2026-11-24 16:48:47 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
-2026-11-24 16:48:47 [INFO] pages.checkout_page: Completando datos: '' 'Doe' '12345'
-2026-11-24 16:48:48 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
-2026-11-24 16:48:48 [INFO] pages.checkout_page: Mensaje de error mostrado: Error: First Name is required
-2026-11-24 16:48:48 [INFO] conftest: Resultado de test_checkout[falta_nombre]: PASÓ (2.75 s)
-2026-11-24 16:48:48 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:48:50 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[falta_apellido] ==========
-2026-11-24 16:48:50 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:48:55 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:48:56 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:48:58 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:48:58 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:48:59 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:48:59 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:48:59 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:48:59 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
-2026-11-24 16:48:59 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
-2026-11-24 16:48:59 [INFO] pages.checkout_page: Completando datos: 'John' '' '12345'
-2026-11-24 16:49:00 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
-2026-11-24 16:49:01 [INFO] pages.checkout_page: Mensaje de error mostrado: Error: Last Name is required
-2026-11-24 16:49:01 [INFO] conftest: Resultado de test_checkout[falta_apellido]: PASÓ (2.24 s)
-2026-11-24 16:49:01 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:49:03 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[falta_codigo_postal] ==========
-2026-11-24 16:49:03 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:49:08 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:49:10 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:49:11 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:49:12 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:49:12 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
-2026-11-24 16:49:13 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
-2026-11-24 16:49:13 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
-2026-11-24 16:49:13 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
-2026-11-24 16:49:13 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
-2026-11-24 16:49:13 [INFO] pages.checkout_page: Completando datos: 'John' 'Doe' ''
-2026-11-24 16:49:14 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
-2026-11-24 16:49:14 [INFO] pages.checkout_page: Mensaje de error mostrado: Error: Postal Code is required
-2026-11-24 16:49:14 [INFO] conftest: Resultado de test_checkout[falta_codigo_postal]: PASÓ (1.96 s)
-2026-11-24 16:49:14 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:49:17 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_catalogo ==========
-2026-11-24 16:49:17 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:49:20 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:49:21 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:49:22 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:49:22 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:49:23 [INFO] tests.ui.test_inventario: Primer producto: Sauce Labs Backpack - Precio: $29.99
-2026-11-24 16:49:23 [INFO] conftest: Resultado de test_catalogo: PASÓ (0.61 s)
-2026-11-24 16:49:23 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:49:26 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[nombre_A_a_Z] ==========
-2026-11-24 16:49:26 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:49:29 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:49:30 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:49:31 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:49:32 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:49:32 [INFO] pages.inventory_page: Ordenando los productos con la opción 'az'
-2026-11-24 16:49:32 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'az': ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Test.allTheThings() T-Shirt (Red)']
-2026-11-24 16:49:32 [INFO] conftest: Resultado de test_ordenar_catalogo[nombre_A_a_Z]: PASÓ (0.38 s)
-2026-11-24 16:49:32 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:49:35 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[nombre_Z_a_A] ==========
-2026-11-24 16:49:35 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:49:38 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:49:39 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:49:41 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:49:43 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:49:43 [INFO] pages.inventory_page: Ordenando los productos con la opción 'za'
-2026-11-24 16:49:44 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'za': ['Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Fleece Jacket', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Bike Light', 'Sauce Labs Backpack']
-2026-11-24 16:49:44 [INFO] conftest: Resultado de test_ordenar_catalogo[nombre_Z_a_A]: PASÓ (1.10 s)
-2026-11-24 16:49:44 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:49:49 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[precio_menor_a_mayor] ==========
-2026-11-24 16:49:49 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:49:52 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:49:56 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:49:57 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:49:59 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:49:59 [INFO] pages.inventory_page: Ordenando los productos con la opción 'lohi'
-2026-11-24 16:50:01 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'lohi': [7.99, 9.99, 15.99, 15.99, 29.99, 49.99]
-2026-11-24 16:50:01 [INFO] conftest: Resultado de test_ordenar_catalogo[precio_menor_a_mayor]: PASÓ (2.09 s)
-2026-11-24 16:50:01 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:50:05 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[precio_mayor_a_menor] ==========
-2026-11-24 16:50:05 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:50:16 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:50:25 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:50:26 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:50:27 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:50:27 [INFO] pages.inventory_page: Ordenando los productos con la opción 'hilo'
-2026-11-24 16:50:28 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'hilo': [49.99, 29.99, 15.99, 15.99, 9.99, 7.99]
-2026-11-24 16:50:28 [INFO] conftest: Resultado de test_ordenar_catalogo[precio_mayor_a_menor]: PASÓ (0.84 s)
-2026-11-24 16:50:28 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:50:30 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_estandar] ==========
-2026-11-24 16:50:30 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:50:37 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:50:44 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:50:48 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:50:49 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:50:49 [INFO] conftest: Resultado de test_login[usuario_estandar]: PASÓ (5.00 s)
-2026-11-24 16:50:49 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:50:52 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_con_problemas] ==========
-2026-11-24 16:50:52 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:50:56 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:50:57 [INFO] pages.login_page: Iniciando sesión con el usuario 'problem_user'
-2026-11-24 16:50:58 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:50:59 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:51:00 [INFO] conftest: Resultado de test_login[usuario_con_problemas]: PASÓ (2.93 s)
-2026-11-24 16:51:00 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:51:04 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[password_incorrecta] ==========
-2026-11-24 16:51:04 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:51:08 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:51:13 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:51:16 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:51:17 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Username and password do not match any user in this service
-2026-11-24 16:51:17 [INFO] conftest: Resultado de test_login[password_incorrecta]: PASÓ (4.02 s)
-2026-11-24 16:51:17 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:51:21 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_inexistente] ==========
-2026-11-24 16:51:21 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:51:30 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:51:31 [INFO] pages.login_page: Iniciando sesión con el usuario 'usuario_que_no_existe'
-2026-11-24 16:51:34 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:51:35 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Username and password do not match any user in this service
-2026-11-24 16:51:35 [INFO] conftest: Resultado de test_login[usuario_inexistente]: PASÓ (3.64 s)
-2026-11-24 16:51:35 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:51:39 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_bloqueado] ==========
-2026-11-24 16:51:39 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:51:42 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:51:44 [INFO] pages.login_page: Iniciando sesión con el usuario 'locked_out_user'
-2026-11-24 16:51:45 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:51:45 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Sorry, this user has been locked out.
-2026-11-24 16:51:45 [INFO] conftest: Resultado de test_login[usuario_bloqueado]: PASÓ (1.27 s)
-2026-11-24 16:51:45 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:51:49 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[campos_vacios] ==========
-2026-11-24 16:51:49 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:51:52 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:51:54 [INFO] pages.login_page: Iniciando sesión con el usuario ''
-2026-11-24 16:51:54 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:51:55 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Username is required
-2026-11-24 16:51:55 [INFO] conftest: Resultado de test_login[campos_vacios]: PASÓ (1.06 s)
-2026-11-24 16:51:55 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:52:00 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[password_vacia] ==========
-2026-11-24 16:52:00 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:52:03 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:52:05 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:52:07 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:52:07 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Password is required
-2026-11-24 16:52:07 [INFO] conftest: Resultado de test_login[password_vacia]: PASÓ (2.33 s)
-2026-11-24 16:52:07 [INFO] conftest: Cerrando el navegador
-2026-11-24 16:52:10 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_logout ==========
-2026-11-24 16:52:10 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
-2026-11-24 16:52:13 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
-2026-11-24 16:52:14 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
-2026-11-24 16:52:15 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
-2026-11-24 16:52:16 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
-2026-11-24 16:52:16 [INFO] pages.base_page: Cerrando la sesión desde el menú
-2026-11-24 16:52:16 [INFO] pages.base_page: Clic en el elemento ('id', 'react-burger-menu-btn')
-2026-11-24 16:52:16 [INFO] pages.base_page: Clic en el elemento ('id', 'logout_sidebar_link')
-2026-11-24 16:52:17 [INFO] conftest: Resultado de test_logout: PASÓ (0.97 s)
-2026-11-24 16:52:17 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:49:46 [INFO] conftest: ========== INICIO: tests/api/test_encadenamiento_api.py::test_flujo_post_autor_y_comentarios ==========
+2026-11-24 17:49:46 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/5
+2026-11-24 17:49:47 [INFO] utils.api_client: Respuesta: 200 en 1225 ms | {   "userId": 1,   "id": 5,   "title": "nesciunt quas odio",   "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque" }
+2026-11-24 17:49:47 [INFO] tests.api.test_encadenamiento_api: El post 5 pertenece al usuario 1
+2026-11-24 17:49:47 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/users/1
+2026-11-24 17:49:47 [INFO] utils.api_client: Respuesta: 200 en 18 ms | {   "id": 1,   "name": "Leanne Graham",   "username": "Bret",   "email": "Sincere@april.biz",   "address": {     "street": "Kulas Light",     "suite": "Apt. 556",     "city": "Gwenborough",     "zipcode": "92998-3874",     "geo": {       "lat": "-37.3159",       "lng": "81.1496"     }   },   "phone"
+2026-11-24 17:49:47 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/5/comments
+2026-11-24 17:49:47 [INFO] utils.api_client: Respuesta: 200 en 16 ms | [   {     "postId": 5,     "id": 21,     "name": "aliquid rerum mollitia qui a consectetur eum sed",     "email": "Noemie@marques.me",     "body": "deleniti aut sed molestias explicabo\ncommodi odio ratione nesciunt\nvoluptate doloremque est\nnam autem error delectus"   },   {     "postId": 5,     "
+2026-11-24 17:49:47 [INFO] conftest: Resultado de test_flujo_post_autor_y_comentarios: PASÓ (1.28 s)
+2026-11-24 17:49:47 [INFO] conftest: ========== INICIO: tests/api/test_encadenamiento_api.py::test_flujo_usuario_crear_y_eliminar_post ==========
+2026-11-24 17:49:47 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/users
+2026-11-24 17:49:49 [INFO] utils.api_client: Respuesta: 200 en 1544 ms | [   {     "id": 1,     "name": "Leanne Graham",     "username": "Bret",     "email": "Sincere@april.biz",     "address": {       "street": "Kulas Light",       "suite": "Apt. 556",       "city": "Gwenborough",       "zipcode": "92998-3874",       "geo": {         "lat": "-37.3159",         "lng": "8
+2026-11-24 17:49:49 [INFO] tests.api.test_encadenamiento_api: El usuario 'Bret' tiene id 1
+2026-11-24 17:49:49 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Post del flujo encadenado", "body": "Creado para Bret", "userId": 1}
+2026-11-24 17:49:49 [INFO] utils.api_client: Respuesta: 201 en 240 ms | {   "title": "Post del flujo encadenado",   "body": "Creado para Bret",   "userId": 1,   "id": 101 }
+2026-11-24 17:49:49 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/users/1/posts
+2026-11-24 17:49:49 [INFO] utils.api_client: Respuesta: 200 en 93 ms | [   {     "userId": 1,     "id": 1,     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",     "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architect
+2026-11-24 17:49:49 [INFO] utils.api_client: DELETE https://jsonplaceholder.typicode.com/posts/1
+2026-11-24 17:49:50 [INFO] utils.api_client: Respuesta: 200 en 201 ms | {}
+2026-11-24 17:49:50 [INFO] conftest: Resultado de test_flujo_usuario_crear_y_eliminar_post: PASÓ (2.09 s)
+2026-11-24 17:49:50 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_obtener_post_existente ==========
+2026-11-24 17:49:50 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/1
+2026-11-24 17:49:51 [INFO] utils.api_client: Respuesta: 200 en 1325 ms | {   "userId": 1,   "id": 1,   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto" }
+2026-11-24 17:49:51 [INFO] conftest: Resultado de test_obtener_post_existente: PASÓ (1.33 s)
+2026-11-24 17:49:51 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_listar_posts_de_un_usuario ==========
+2026-11-24 17:49:51 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts
+2026-11-24 17:49:52 [INFO] utils.api_client: Respuesta: 200 en 1241 ms | [   {     "userId": 1,     "id": 1,     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",     "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architect
+2026-11-24 17:49:52 [INFO] conftest: Resultado de test_listar_posts_de_un_usuario: PASÓ (1.31 s)
+2026-11-24 17:49:52 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_obtener_post_inexistente ==========
+2026-11-24 17:49:52 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/posts/99999
+2026-11-24 17:49:54 [INFO] utils.api_client: Respuesta: 404 en 1738 ms | {}
+2026-11-24 17:49:54 [INFO] conftest: Resultado de test_obtener_post_inexistente: PASÓ (1.74 s)
+2026-11-24 17:49:54 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_crear_post[post_simple] ==========
+2026-11-24 17:49:54 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Mi primer post automatizado", "body": "Creado desde el framework de QA Automation", "userId": 1}
+2026-11-24 17:49:55 [INFO] utils.api_client: Respuesta: 201 en 1321 ms | {   "title": "Mi primer post automatizado",   "body": "Creado desde el framework de QA Automation",   "userId": 1,   "id": 101 }
+2026-11-24 17:49:55 [INFO] conftest: Resultado de test_crear_post[post_simple]: PASÓ (1.32 s)
+2026-11-24 17:49:55 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_crear_post[post_con_acentos] ==========
+2026-11-24 17:49:55 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Prueba de caracteres: ñandú, acción, pingüino", "body": "Verifico que la API devuelva bien los caracteres especiales", "userId": 5}
+2026-11-24 17:49:56 [INFO] utils.api_client: Respuesta: 201 en 1118 ms | {   "title": "Prueba de caracteres: ñandú, acción, pingüino",   "body": "Verifico que la API devuelva bien los caracteres especiales",   "userId": 5,   "id": 101 }
+2026-11-24 17:49:56 [INFO] conftest: Resultado de test_crear_post[post_con_acentos]: PASÓ (1.12 s)
+2026-11-24 17:49:56 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_crear_post[post_texto_largo] ==========
+2026-11-24 17:49:56 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Post con un cuerpo extenso", "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "userId": 10}
+2026-11-24 17:49:58 [INFO] utils.api_client: Respuesta: 201 en 1119 ms | {   "title": "Post con un cuerpo extenso",   "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",   "userId": 
+2026-11-24 17:49:58 [INFO] conftest: Resultado de test_crear_post[post_texto_largo]: PASÓ (1.12 s)
+2026-11-24 17:49:58 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_actualizar_post ==========
+2026-11-24 17:49:58 [INFO] utils.api_client: PUT https://jsonplaceholder.typicode.com/posts/1 | cuerpo: {"id": 1, "userId": 1, "title": "Título actualizado", "body": "Cuerpo actualizado"}
+2026-11-24 17:49:59 [INFO] utils.api_client: Respuesta: 200 en 1416 ms | {   "id": 1,   "userId": 1,   "title": "Título actualizado",   "body": "Cuerpo actualizado" }
+2026-11-24 17:49:59 [INFO] conftest: Resultado de test_actualizar_post: PASÓ (1.42 s)
+2026-11-24 17:49:59 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_eliminar_post ==========
+2026-11-24 17:49:59 [INFO] utils.api_client: DELETE https://jsonplaceholder.typicode.com/posts/1
+2026-11-24 17:50:03 [INFO] utils.api_client: Respuesta: 200 en 3778 ms | {}
+2026-11-24 17:50:03 [INFO] conftest: Resultado de test_eliminar_post: PASÓ (3.78 s)
+2026-11-24 17:50:03 [INFO] conftest: ========== INICIO: tests/api/test_posts_api.py::test_endpoint_inexistente ==========
+2026-11-24 17:50:03 [INFO] utils.api_client: GET https://jsonplaceholder.typicode.com/ruta-que-no-existe
+2026-11-24 17:50:04 [INFO] utils.api_client: Respuesta: 404 en 1687 ms | {}
+2026-11-24 17:50:04 [INFO] conftest: Resultado de test_endpoint_inexistente: PASÓ (1.69 s)
+2026-11-24 17:50:04 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_agregar_productos_carrito[un_producto] ==========
+2026-11-24 17:50:05 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:50:16 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:50:17 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:50:18 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:50:19 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:50:19 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:50:19 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:50:19 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:50:19 [INFO] conftest: Resultado de test_agregar_productos_carrito[un_producto]: PASÓ (0.70 s)
+2026-11-24 17:50:20 [INFO] conftest: Evidencia guardada: test_agregar_productos_carrito_un_producto_20261124_175019.png
+2026-11-24 17:50:20 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:50:22 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_agregar_productos_carrito[dos_productos] ==========
+2026-11-24 17:50:22 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:50:25 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:50:26 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:50:29 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:50:31 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:50:31 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bike Light'
+2026-11-24 17:50:32 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Onesie'
+2026-11-24 17:50:32 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:50:32 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:50:32 [INFO] conftest: Resultado de test_agregar_productos_carrito[dos_productos]: PASÓ (1.50 s)
+2026-11-24 17:50:32 [INFO] conftest: Evidencia guardada: test_agregar_productos_carrito_dos_productos_20261124_175032.png
+2026-11-24 17:50:32 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:50:35 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_agregar_productos_carrito[tres_productos] ==========
+2026-11-24 17:50:35 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:50:38 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:50:39 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:50:40 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:50:41 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:50:41 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bolt T-Shirt'
+2026-11-24 17:50:42 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Fleece Jacket'
+2026-11-24 17:50:42 [INFO] pages.inventory_page: Agregando al carrito el producto 'Test.allTheThings() T-Shirt (Red)'
+2026-11-24 17:50:43 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:50:43 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:50:43 [INFO] conftest: Resultado de test_agregar_productos_carrito[tres_productos]: PASÓ (2.23 s)
+2026-11-24 17:50:43 [INFO] conftest: Evidencia guardada: test_agregar_productos_carrito_tres_productos_20261124_175043.png
+2026-11-24 17:50:43 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:50:46 [INFO] conftest: ========== INICIO: tests/ui/test_carrito.py::test_quitar_producto_carrito ==========
+2026-11-24 17:50:46 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:50:50 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:50:51 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:50:52 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:50:53 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:50:53 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:50:53 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:50:53 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:50:53 [INFO] pages.cart_page: Quitando el primer producto del carrito
+2026-11-24 17:50:53 [INFO] pages.base_page: Clic en el elemento ('css selector', 'button.cart_button')
+2026-11-24 17:50:54 [INFO] conftest: Resultado de test_quitar_producto_carrito: PASÓ (1.66 s)
+2026-11-24 17:50:54 [INFO] conftest: Evidencia guardada: test_quitar_producto_carrito_20261124_175054.png
+2026-11-24 17:50:54 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:50:58 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[datos_completos] ==========
+2026-11-24 17:50:58 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:01 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:01 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:51:02 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:02 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:03 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:51:03 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:51:03 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:51:03 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:51:03 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:51:03 [INFO] pages.checkout_page: Completando datos: 'John' 'Doe' '12345'
+2026-11-24 17:51:04 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
+2026-11-24 17:51:04 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-two.html
+2026-11-24 17:51:04 [INFO] pages.base_page: Clic en el elemento ('id', 'finish')
+2026-11-24 17:51:04 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-complete.html
+2026-11-24 17:51:04 [INFO] conftest: Resultado de test_checkout[datos_completos]: PASÓ (1.83 s)
+2026-11-24 17:51:04 [INFO] conftest: Evidencia guardada: test_checkout_datos_completos_20261124_175104.png
+2026-11-24 17:51:04 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:07 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[datos_completos_con_acentos] ==========
+2026-11-24 17:51:07 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:09 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:09 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:51:10 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:10 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:11 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:51:11 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:51:11 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:51:11 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:51:11 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:51:11 [INFO] pages.checkout_page: Completando datos: 'María' 'Pérez' 'C1425'
+2026-11-24 17:51:11 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
+2026-11-24 17:51:12 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-two.html
+2026-11-24 17:51:12 [INFO] pages.base_page: Clic en el elemento ('id', 'finish')
+2026-11-24 17:51:12 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-complete.html
+2026-11-24 17:51:12 [INFO] conftest: Resultado de test_checkout[datos_completos_con_acentos]: PASÓ (1.85 s)
+2026-11-24 17:51:12 [INFO] conftest: Evidencia guardada: test_checkout_datos_completos_con_acentos_20261124_175112.png
+2026-11-24 17:51:12 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:15 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[falta_nombre] ==========
+2026-11-24 17:51:15 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:17 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:19 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:51:20 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:20 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:20 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:51:20 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:51:20 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:51:20 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:51:21 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:51:21 [INFO] pages.checkout_page: Completando datos: '' 'Doe' '12345'
+2026-11-24 17:51:21 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
+2026-11-24 17:51:21 [INFO] pages.checkout_page: Mensaje de error mostrado: Error: First Name is required
+2026-11-24 17:51:21 [INFO] conftest: Resultado de test_checkout[falta_nombre]: PASÓ (1.43 s)
+2026-11-24 17:51:22 [INFO] conftest: Evidencia guardada: test_checkout_falta_nombre_20261124_175121.png
+2026-11-24 17:51:22 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:24 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[falta_apellido] ==========
+2026-11-24 17:51:24 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:26 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:26 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:51:27 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:27 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:28 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:51:28 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:51:28 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:51:28 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:51:28 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:51:28 [INFO] pages.checkout_page: Completando datos: 'John' '' '12345'
+2026-11-24 17:51:29 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
+2026-11-24 17:51:29 [INFO] pages.checkout_page: Mensaje de error mostrado: Error: Last Name is required
+2026-11-24 17:51:29 [INFO] conftest: Resultado de test_checkout[falta_apellido]: PASÓ (1.45 s)
+2026-11-24 17:51:29 [INFO] conftest: Evidencia guardada: test_checkout_falta_apellido_20261124_175129.png
+2026-11-24 17:51:29 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:31 [INFO] conftest: ========== INICIO: tests/ui/test_checkout.py::test_checkout[falta_codigo_postal] ==========
+2026-11-24 17:51:31 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:34 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:34 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:51:35 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:35 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:36 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:51:36 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:51:36 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:51:36 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:51:36 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:51:36 [INFO] pages.checkout_page: Completando datos: 'John' 'Doe' ''
+2026-11-24 17:51:37 [INFO] pages.base_page: Clic en el elemento ('id', 'continue')
+2026-11-24 17:51:37 [INFO] pages.checkout_page: Mensaje de error mostrado: Error: Postal Code is required
+2026-11-24 17:51:37 [INFO] conftest: Resultado de test_checkout[falta_codigo_postal]: PASÓ (1.64 s)
+2026-11-24 17:51:37 [INFO] conftest: Evidencia guardada: test_checkout_falta_codigo_postal_20261124_175137.png
+2026-11-24 17:51:37 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:40 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_imagenes_de_productos[problem_user] ==========
+2026-11-24 17:51:40 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:41 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:42 [INFO] pages.login_page: Iniciando sesión con el usuario 'problem_user'
+2026-11-24 17:51:43 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:43 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:44 [INFO] conftest: Resultado de test_imagenes_de_productos[problem_user]: FALLO ESPERADO (BUG-001: todas las imágenes son la misma) (2.00 s)
+2026-11-24 17:51:44 [INFO] conftest: Evidencia guardada: test_imagenes_de_productos_problem_user_20261124_175144.png
+2026-11-24 17:51:44 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:47 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_imagenes_de_productos[visual_user] ==========
+2026-11-24 17:51:47 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:48 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:49 [INFO] pages.login_page: Iniciando sesión con el usuario 'visual_user'
+2026-11-24 17:51:50 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:50 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:50 [INFO] conftest: Resultado de test_imagenes_de_productos[visual_user]: FALLO ESPERADO (BUG-008: la mochila muestra una imagen incorrecta) (2.00 s)
+2026-11-24 17:51:51 [INFO] conftest: Evidencia guardada: test_imagenes_de_productos_visual_user_20261124_175150.png
+2026-11-24 17:51:51 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:51:53 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_ordenar_z_a[problem_user] ==========
+2026-11-24 17:51:53 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:51:55 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:51:56 [INFO] pages.login_page: Iniciando sesión con el usuario 'problem_user'
+2026-11-24 17:51:57 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:51:57 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:51:57 [INFO] pages.inventory_page: Ordenando los productos con la opción 'za'
+2026-11-24 17:51:58 [INFO] conftest: Resultado de test_ordenar_z_a[problem_user]: FALLO ESPERADO (BUG-002: el filtro no ordena) (2.43 s)
+2026-11-24 17:51:58 [INFO] conftest: Evidencia guardada: test_ordenar_z_a_problem_user_20261124_175158.png
+2026-11-24 17:51:58 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:05 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_ordenar_z_a[error_user] ==========
+2026-11-24 17:52:05 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:07 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:08 [INFO] pages.login_page: Iniciando sesión con el usuario 'error_user'
+2026-11-24 17:52:08 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:52:09 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:52:09 [INFO] pages.inventory_page: Ordenando los productos con la opción 'za'
+2026-11-24 17:52:09 [WARNING] pages.base_page: El sitio mostró una alerta: Sorting is broken! This error has been reported to Backtrace.
+2026-11-24 17:52:09 [INFO] conftest: Resultado de test_ordenar_z_a[error_user]: FALLO ESPERADO (BUG-005: alerta 'Sorting is broken!') (1.82 s)
+2026-11-24 17:52:09 [INFO] conftest: Evidencia guardada: test_ordenar_z_a_error_user_20261124_175209.png
+2026-11-24 17:52:09 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:13 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_agregar_todos_los_productos[problem_user] ==========
+2026-11-24 17:52:13 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:16 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:17 [INFO] pages.login_page: Iniciando sesión con el usuario 'problem_user'
+2026-11-24 17:52:17 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:52:18 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:52:19 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:52:19 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bike Light'
+2026-11-24 17:52:19 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bolt T-Shirt'
+2026-11-24 17:52:20 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Fleece Jacket'
+2026-11-24 17:52:20 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Onesie'
+2026-11-24 17:52:21 [INFO] pages.inventory_page: Agregando al carrito el producto 'Test.allTheThings() T-Shirt (Red)'
+2026-11-24 17:52:21 [INFO] conftest: Resultado de test_agregar_todos_los_productos[problem_user]: FALLO ESPERADO (BUG-003: solo se agregan 3 de 6 productos) (5.19 s)
+2026-11-24 17:52:21 [INFO] conftest: Evidencia guardada: test_agregar_todos_los_productos_problem_user_20261124_175221.png
+2026-11-24 17:52:21 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:24 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_agregar_todos_los_productos[error_user] ==========
+2026-11-24 17:52:24 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:26 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:26 [INFO] pages.login_page: Iniciando sesión con el usuario 'error_user'
+2026-11-24 17:52:27 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:52:27 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:52:28 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:52:28 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bike Light'
+2026-11-24 17:52:29 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Bolt T-Shirt'
+2026-11-24 17:52:29 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Fleece Jacket'
+2026-11-24 17:52:29 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Onesie'
+2026-11-24 17:52:30 [INFO] pages.inventory_page: Agregando al carrito el producto 'Test.allTheThings() T-Shirt (Red)'
+2026-11-24 17:52:30 [INFO] conftest: Resultado de test_agregar_todos_los_productos[error_user]: FALLO ESPERADO (BUG-003: solo se agregan 3 de 6 productos) (4.54 s)
+2026-11-24 17:52:30 [INFO] conftest: Evidencia guardada: test_agregar_todos_los_productos_error_user_20261124_175230.png
+2026-11-24 17:52:30 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:33 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_checkout_con_usuario_especial[problem_user] ==========
+2026-11-24 17:52:33 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:34 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:35 [INFO] pages.login_page: Iniciando sesión con el usuario 'problem_user'
+2026-11-24 17:52:36 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:52:36 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:52:36 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:52:36 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:52:38 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:52:38 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:52:38 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:52:38 [INFO] pages.checkout_page: Completando datos: 'John' 'Doe' '12345'
+2026-11-24 17:52:39 [INFO] conftest: Resultado de test_checkout_con_usuario_especial[problem_user]: FALLO ESPERADO (BUG-004: el apellido se escribe en el campo nombre) (4.66 s)
+2026-11-24 17:52:39 [INFO] conftest: Evidencia guardada: test_checkout_con_usuario_especial_problem_user_20261124_175239.png
+2026-11-24 17:52:39 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:41 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_checkout_con_usuario_especial[error_user] ==========
+2026-11-24 17:52:41 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:43 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:44 [INFO] pages.login_page: Iniciando sesión con el usuario 'error_user'
+2026-11-24 17:52:44 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:52:45 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:52:45 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:52:45 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:52:45 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:52:45 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:52:45 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:52:45 [INFO] pages.checkout_page: Completando datos: 'John' 'Doe' '12345'
+2026-11-24 17:52:46 [INFO] conftest: Resultado de test_checkout_con_usuario_especial[error_user]: FALLO ESPERADO (BUG-006: el apellido no se guarda y Finish no finaliza) (3.22 s)
+2026-11-24 17:52:46 [INFO] conftest: Evidencia guardada: test_checkout_con_usuario_especial_error_user_20261124_175246.png
+2026-11-24 17:52:46 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:49 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_tiempo_de_login[standard_user] ==========
+2026-11-24 17:52:49 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:51 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:51 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:52:52 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:52:53 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:52:53 [INFO] conftest: Resultado de test_tiempo_de_login[standard_user]: PASÓ (1.85 s)
+2026-11-24 17:52:53 [INFO] conftest: Evidencia guardada: test_tiempo_de_login_standard_user_20261124_175253.png
+2026-11-24 17:52:53 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:52:55 [INFO] conftest: ========== INICIO: tests/ui/test_defectos_conocidos.py::test_tiempo_de_login[performance_glitch_user] ==========
+2026-11-24 17:52:55 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:52:57 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:52:58 [INFO] pages.login_page: Iniciando sesión con el usuario 'performance_glitch_user'
+2026-11-24 17:52:58 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:04 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:04 [INFO] conftest: Resultado de test_tiempo_de_login[performance_glitch_user]: FALLO ESPERADO (BUG-007: el login tarda más de 3 s) (6.96 s)
+2026-11-24 17:53:04 [INFO] conftest: Evidencia guardada: test_tiempo_de_login_performance_glitch_user_20261124_175304.png
+2026-11-24 17:53:04 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:07 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_catalogo ==========
+2026-11-24 17:53:07 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:08 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:09 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:10 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:10 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:10 [INFO] tests.ui.test_inventario: Primer producto: Sauce Labs Backpack - Precio: $29.99
+2026-11-24 17:53:10 [INFO] conftest: Resultado de test_catalogo: PASÓ (0.41 s)
+2026-11-24 17:53:11 [INFO] conftest: Evidencia guardada: test_catalogo_20261124_175310.png
+2026-11-24 17:53:11 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:13 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[nombre_A_a_Z] ==========
+2026-11-24 17:53:13 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:14 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:15 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:16 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:16 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:16 [INFO] pages.inventory_page: Ordenando los productos con la opción 'az'
+2026-11-24 17:53:17 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'az': ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Test.allTheThings() T-Shirt (Red)']
+2026-11-24 17:53:17 [INFO] conftest: Resultado de test_ordenar_catalogo[nombre_A_a_Z]: PASÓ (0.33 s)
+2026-11-24 17:53:17 [INFO] conftest: Evidencia guardada: test_ordenar_catalogo_nombre_A_a_Z_20261124_175317.png
+2026-11-24 17:53:17 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:19 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[nombre_Z_a_A] ==========
+2026-11-24 17:53:19 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:21 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:21 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:22 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:22 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:22 [INFO] pages.inventory_page: Ordenando los productos con la opción 'za'
+2026-11-24 17:53:23 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'za': ['Test.allTheThings() T-Shirt (Red)', 'Sauce Labs Onesie', 'Sauce Labs Fleece Jacket', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Bike Light', 'Sauce Labs Backpack']
+2026-11-24 17:53:23 [INFO] conftest: Resultado de test_ordenar_catalogo[nombre_Z_a_A]: PASÓ (0.50 s)
+2026-11-24 17:53:23 [INFO] conftest: Evidencia guardada: test_ordenar_catalogo_nombre_Z_a_A_20261124_175323.png
+2026-11-24 17:53:23 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:25 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[precio_menor_a_mayor] ==========
+2026-11-24 17:53:25 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:27 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:28 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:28 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:29 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:29 [INFO] pages.inventory_page: Ordenando los productos con la opción 'lohi'
+2026-11-24 17:53:29 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'lohi': [7.99, 9.99, 15.99, 15.99, 29.99, 49.99]
+2026-11-24 17:53:29 [INFO] conftest: Resultado de test_ordenar_catalogo[precio_menor_a_mayor]: PASÓ (0.40 s)
+2026-11-24 17:53:29 [INFO] conftest: Evidencia guardada: test_ordenar_catalogo_precio_menor_a_mayor_20261124_175329.png
+2026-11-24 17:53:29 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:32 [INFO] conftest: ========== INICIO: tests/ui/test_inventario.py::test_ordenar_catalogo[precio_mayor_a_menor] ==========
+2026-11-24 17:53:32 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:33 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:34 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:35 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:35 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:35 [INFO] pages.inventory_page: Ordenando los productos con la opción 'hilo'
+2026-11-24 17:53:35 [INFO] tests.ui.test_inventario: Valores luego de ordenar por 'hilo': [49.99, 29.99, 15.99, 15.99, 9.99, 7.99]
+2026-11-24 17:53:35 [INFO] conftest: Resultado de test_ordenar_catalogo[precio_mayor_a_menor]: PASÓ (0.40 s)
+2026-11-24 17:53:36 [INFO] conftest: Evidencia guardada: test_ordenar_catalogo_precio_mayor_a_menor_20261124_175335.png
+2026-11-24 17:53:36 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:38 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_estandar] ==========
+2026-11-24 17:53:38 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:40 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:40 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:41 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:41 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:42 [INFO] conftest: Resultado de test_login[usuario_estandar]: PASÓ (1.07 s)
+2026-11-24 17:53:42 [INFO] conftest: Evidencia guardada: test_login_usuario_estandar_20261124_175342.png
+2026-11-24 17:53:42 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:44 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_con_problemas] ==========
+2026-11-24 17:53:44 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:46 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:47 [INFO] pages.login_page: Iniciando sesión con el usuario 'problem_user'
+2026-11-24 17:53:47 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:47 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:53:47 [INFO] conftest: Resultado de test_login[usuario_con_problemas]: PASÓ (0.95 s)
+2026-11-24 17:53:48 [INFO] conftest: Evidencia guardada: test_login_usuario_con_problemas_20261124_175347.png
+2026-11-24 17:53:48 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:50 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[password_incorrecta] ==========
+2026-11-24 17:53:50 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:51 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:52 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:53:53 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:53 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Username and password do not match any user in this service
+2026-11-24 17:53:53 [INFO] conftest: Resultado de test_login[password_incorrecta]: PASÓ (0.76 s)
+2026-11-24 17:53:53 [INFO] conftest: Evidencia guardada: test_login_password_incorrecta_20261124_175353.png
+2026-11-24 17:53:53 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:53:56 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_inexistente] ==========
+2026-11-24 17:53:56 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:53:57 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:53:58 [INFO] pages.login_page: Iniciando sesión con el usuario 'usuario_que_no_existe'
+2026-11-24 17:53:59 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:53:59 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Username and password do not match any user in this service
+2026-11-24 17:53:59 [INFO] conftest: Resultado de test_login[usuario_inexistente]: PASÓ (0.82 s)
+2026-11-24 17:53:59 [INFO] conftest: Evidencia guardada: test_login_usuario_inexistente_20261124_175359.png
+2026-11-24 17:53:59 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:02 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_bloqueado] ==========
+2026-11-24 17:54:02 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:03 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:04 [INFO] pages.login_page: Iniciando sesión con el usuario 'locked_out_user'
+2026-11-24 17:54:05 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:05 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Sorry, this user has been locked out.
+2026-11-24 17:54:05 [INFO] conftest: Resultado de test_login[usuario_bloqueado]: PASÓ (0.90 s)
+2026-11-24 17:54:05 [INFO] conftest: Evidencia guardada: test_login_usuario_bloqueado_20261124_175405.png
+2026-11-24 17:54:05 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:08 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[campos_vacios] ==========
+2026-11-24 17:54:08 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:10 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:12 [INFO] pages.login_page: Iniciando sesión con el usuario ''
+2026-11-24 17:54:12 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:12 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Username is required
+2026-11-24 17:54:12 [INFO] conftest: Resultado de test_login[campos_vacios]: PASÓ (0.59 s)
+2026-11-24 17:54:13 [INFO] conftest: Evidencia guardada: test_login_campos_vacios_20261124_175412.png
+2026-11-24 17:54:13 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:15 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[password_vacia] ==========
+2026-11-24 17:54:15 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:16 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:17 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:54:18 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:18 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Password is required
+2026-11-24 17:54:18 [INFO] conftest: Resultado de test_login[password_vacia]: PASÓ (0.89 s)
+2026-11-24 17:54:18 [INFO] conftest: Evidencia guardada: test_login_password_vacia_20261124_175418.png
+2026-11-24 17:54:18 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:21 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_logout ==========
+2026-11-24 17:54:21 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:22 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:23 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:54:24 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:24 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:54:24 [INFO] pages.base_page: Cerrando la sesión desde el menú
+2026-11-24 17:54:24 [INFO] pages.base_page: Clic en el elemento ('id', 'react-burger-menu-btn')
+2026-11-24 17:54:24 [INFO] pages.base_page: Clic en el elemento ('id', 'logout_sidebar_link')
+2026-11-24 17:54:26 [INFO] conftest: Resultado de test_logout: PASÓ (1.83 s)
+2026-11-24 17:54:27 [INFO] conftest: Evidencia guardada: test_logout_20261124_175426.png
+2026-11-24 17:54:27 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:30 [INFO] conftest: ========== INICIO: tests/ui/test_responsividad.py::test_responsividad[desktop_1920x1080] ==========
+2026-11-24 17:54:30 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:32 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:33 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:54:34 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:34 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:54:35 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:54:35 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:54:35 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:54:36 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:54:36 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:54:36 [INFO] conftest: Resultado de test_responsividad[desktop_1920x1080]: PASÓ (3.92 s)
+2026-11-24 17:54:36 [INFO] conftest: Evidencia guardada: test_responsividad_desktop_1920x1080_20261124_175436.png
+2026-11-24 17:54:36 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:39 [INFO] conftest: ========== INICIO: tests/ui/test_responsividad.py::test_responsividad[tablet_768x1024] ==========
+2026-11-24 17:54:39 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:40 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:42 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:54:42 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:43 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:54:43 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:54:43 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:54:44 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:54:44 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:54:44 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:54:44 [INFO] conftest: Resultado de test_responsividad[tablet_768x1024]: PASÓ (3.76 s)
+2026-11-24 17:54:44 [INFO] conftest: Evidencia guardada: test_responsividad_tablet_768x1024_20261124_175444.png
+2026-11-24 17:54:44 [INFO] conftest: Cerrando el navegador
+2026-11-24 17:54:47 [INFO] conftest: ========== INICIO: tests/ui/test_responsividad.py::test_responsividad[mobile_390x844] ==========
+2026-11-24 17:54:47 [INFO] utils.driver_factory: Iniciando el navegador Chrome (headless=True)
+2026-11-24 17:54:48 [INFO] pages.login_page: Abriendo https://www.saucedemo.com/
+2026-11-24 17:54:49 [INFO] pages.login_page: Iniciando sesión con el usuario 'standard_user'
+2026-11-24 17:54:50 [INFO] pages.base_page: Clic en el elemento ('id', 'login-button')
+2026-11-24 17:54:50 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/inventory.html
+2026-11-24 17:54:50 [INFO] pages.inventory_page: Agregando al carrito el producto 'Sauce Labs Backpack'
+2026-11-24 17:54:51 [INFO] pages.base_page: Clic en el elemento ('class name', 'shopping_cart_link')
+2026-11-24 17:54:51 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/cart.html
+2026-11-24 17:54:51 [INFO] pages.base_page: Clic en el elemento ('id', 'checkout')
+2026-11-24 17:54:51 [INFO] pages.base_page: URL actual: https://www.saucedemo.com/checkout-step-one.html
+2026-11-24 17:54:51 [INFO] conftest: Resultado de test_responsividad[mobile_390x844]: PASÓ (2.97 s)
+2026-11-24 17:54:51 [INFO] conftest: Evidencia guardada: test_responsividad_mobile_390x844_20261124_175451.png
+2026-11-24 17:54:51 [INFO] conftest: Cerrando el navegador
