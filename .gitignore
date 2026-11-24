@@ -1,4 +1,8 @@
 .venv/
+venv/
 __pycache__/
 .pytest_cache/
 *.pyc
+
+# Las capturas se generan en cada ejecución fallida
+reports/capturas/*.png
