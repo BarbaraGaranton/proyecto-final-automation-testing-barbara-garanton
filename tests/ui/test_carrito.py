@@ -1,21 +1,31 @@
-"""Casos de prueba del carrito de compras."""
+"""Casos de prueba del carrito de compras.
+
+Los productos a agregar se leen de data/productos.json.
+"""
 
 import pytest
 
+from utils.data_loader import generar_ids, leer_json
+
 pytestmark = pytest.mark.ui
 
+CASOS_PRODUCTOS = leer_json("productos.json")
 
-# CP-08: agregar un producto al carrito
-@pytest.mark.smoke
-def test_agregar_producto_carrito(inventario):
-    nombre_agregado = inventario.agregar_primer_producto()
-    assert inventario.obtener_contador_carrito() == 1
+
+# CP-14 a CP-16: agregar uno o varios productos al carrito
+@pytest.mark.parametrize("caso", CASOS_PRODUCTOS, ids=generar_ids(CASOS_PRODUCTOS))
+def test_agregar_productos_carrito(inventario, caso):
+    for nombre in caso["productos"]:
+        inventario.agregar_producto_por_nombre(nombre)
+
+    assert inventario.obtener_contador_carrito() == len(caso["productos"])
 
     carrito = inventario.ir_al_carrito()
-    assert carrito.obtener_nombres_productos() == [nombre_agregado]
+    assert sorted(carrito.obtener_nombres_productos()) == sorted(caso["productos"])
 
 
-# CP-09: quitar un producto del carrito
+# CP-17: quitar un producto del carrito
+@pytest.mark.smoke
 def test_quitar_producto_carrito(inventario):
     inventario.agregar_primer_producto()
     carrito = inventario.ir_al_carrito()

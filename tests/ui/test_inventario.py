@@ -8,8 +8,16 @@ pytestmark = pytest.mark.ui
 
 logger = logging.getLogger(__name__)
 
+# Opciones del filtro de orden: (valor del <select>, clave para ordenar, ¿descendente?)
+OPCIONES_ORDEN = [
+    pytest.param("az", "nombres", False, id="nombre_A_a_Z"),
+    pytest.param("za", "nombres", True, id="nombre_Z_a_A"),
+    pytest.param("lohi", "precios", False, id="precio_menor_a_mayor"),
+    pytest.param("hilo", "precios", True, id="precio_mayor_a_menor"),
+]
 
-# CP-06: navegación al catálogo
+
+# CP-09: navegación al catálogo
 @pytest.mark.smoke
 def test_catalogo(inventario):
     assert inventario.obtener_titulo_seccion() == "Products"
@@ -25,10 +33,11 @@ def test_catalogo(inventario):
     assert inventario.elementos_principales_visibles()
 
 
-# CP-07: ordenar por precio de menor a mayor
-def test_ordenar_por_precio(inventario):
-    inventario.ordenar_por("lohi")
+# CP-10 a CP-13: ordenar el catálogo con cada opción del filtro
+@pytest.mark.parametrize("opcion, criterio, descendente", OPCIONES_ORDEN)
+def test_ordenar_catalogo(inventario, opcion, criterio, descendente):
+    inventario.ordenar_por(opcion)
 
-    precios = inventario.obtener_precios()
-    logger.info("Precios ordenados: %s", precios)
-    assert precios == sorted(precios)
+    valores = inventario.obtener_precios() if criterio == "precios" else inventario.obtener_nombres()
+    logger.info("Valores luego de ordenar por '%s': %s", opcion, valores)
+    assert valores == sorted(valores, reverse=descendente)
