@@ -238,11 +238,15 @@ Se genera en cada ejecución y se abre con cualquier navegador.
 Registra paso a paso cada ejecución con fecha, hora y nivel:
 
 ```
-2026-11-24 16:50:01 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_bloqueado] ==========
-2026-11-24 16:50:05 [INFO] pages.login_page: Iniciando sesión con el usuario 'locked_out_user'
-2026-11-24 16:50:06 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Sorry, this user has been locked out.
-2026-11-24 16:50:06 [INFO] conftest: Resultado de test_login[usuario_bloqueado]: PASÓ (2.31 s)
+2026-11-24 16:51:39 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_bloqueado] ==========
+2026-11-24 16:51:44 [INFO] pages.login_page: Iniciando sesión con el usuario 'locked_out_user'
+2026-11-24 16:51:45 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Sorry, this user has been locked out.
+2026-11-24 16:51:45 [INFO] conftest: Resultado de test_login[usuario_bloqueado]: PASÓ (1.27 s)
+2026-11-24 16:46:09 [INFO] utils.api_client: POST https://jsonplaceholder.typicode.com/posts | cuerpo: {"title": "Post del flujo encadenado", ...}
+2026-11-24 16:46:09 [INFO] utils.api_client: Respuesta: 201 en 270 ms | {"title": "Post del flujo encadenado", ..., "id": 101}
 ```
+
+Resultado de la última ejecución local: **33 de 33 tests aprobados**.
 
 En las pruebas de API queda registrado el método, la URL, el cuerpo enviado, el
 código de respuesta, el tiempo en milisegundos y el comienzo de la respuesta. Las
