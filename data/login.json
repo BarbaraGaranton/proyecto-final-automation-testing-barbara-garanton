@@ -1,0 +1,51 @@
+[
+  {
+    "id": "usuario_estandar",
+    "usuario": "standard_user",
+    "password": "secret_sauce",
+    "debe_ingresar": true,
+    "mensaje_esperado": ""
+  },
+  {
+    "id": "usuario_con_problemas",
+    "usuario": "problem_user",
+    "password": "secret_sauce",
+    "debe_ingresar": true,
+    "mensaje_esperado": ""
+  },
+  {
+    "id": "password_incorrecta",
+    "usuario": "standard_user",
+    "password": "clave_incorrecta",
+    "debe_ingresar": false,
+    "mensaje_esperado": "Username and password do not match any user in this service"
+  },
+  {
+    "id": "usuario_inexistente",
+    "usuario": "usuario_que_no_existe",
+    "password": "secret_sauce",
+    "debe_ingresar": false,
+    "mensaje_esperado": "Username and password do not match any user in this service"
+  },
+  {
+    "id": "usuario_bloqueado",
+    "usuario": "locked_out_user",
+    "password": "secret_sauce",
+    "debe_ingresar": false,
+    "mensaje_esperado": "Sorry, this user has been locked out."
+  },
+  {
+    "id": "campos_vacios",
+    "usuario": "",
+    "password": "",
+    "debe_ingresar": false,
+    "mensaje_esperado": "Username is required"
+  },
+  {
+    "id": "password_vacia",
+    "usuario": "standard_user",
+    "password": "",
+    "debe_ingresar": false,
+    "mensaje_esperado": "Password is required"
+  }
+]

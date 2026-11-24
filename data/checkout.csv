@@ -1,0 +1,6 @@
+id,nombre,apellido,codigo_postal,mensaje_error
+datos_completos,John,Doe,12345,
+datos_completos_con_acentos,María,Pérez,C1425,
+falta_nombre,,Doe,12345,First Name is required
+falta_apellido,John,,12345,Last Name is required
+falta_codigo_postal,John,Doe,,Postal Code is required
