@@ -1,113 +1,178 @@
-# Pre-Entrega - Automation Testing (SauceDemo)
+# Proyecto Final - Framework de Automatización de Pruebas
 
-¡Hola! Soy Barbara Garanton y este es mi proyecto de pre-entrega del curso de
+![Pruebas automatizadas](https://github.com/BarbaraGaranton/proyecto-final-automation-testing-barbara-garanton/actions/workflows/pruebas.yml/badge.svg)
+
+¡Hola! Soy Barbara Garanton y este es mi Trabajo Final Integrador del curso de
 QA Automation de Talento Tech.
 
 ## Propósito
 
-En este proyecto automaticé los flujos principales de
-[saucedemo.com](https://www.saucedemo.com), un sitio de práctica para testing.
-Mi objetivo fue poner en práctica lo que aprendí hasta la clase 8: ubicar
-elementos en una página, interactuar con ellos y validar que el sitio responda
-como se espera.
+Desarrollé un framework de automatización de pruebas en Python que combina todo
+lo que aprendí en el curso:
 
-Probé el login, el catálogo de productos y el carrito de compras, que eran los
-flujos obligatorios, y además sumé algunos casos por mi cuenta, como el checkout
-y los logins que deberían fallar.
+- **Pruebas de UI** sobre [saucedemo.com](https://www.saucedemo.com) con Selenium
+  WebDriver y el patrón **Page Object Model**.
+- **Pruebas de API** sobre [JSONPlaceholder](https://jsonplaceholder.typicode.com)
+  con la biblioteca **Requests**.
+- **Datos de prueba externos** (JSON y CSV) para ejecutar el mismo test con
+  distintos conjuntos de datos.
+- **Reportes HTML**, **logs** y **capturas de pantalla automáticas** cuando una
+  prueba falla.
+- **Integración continua** con GitHub Actions: las pruebas se ejecutan solas en
+  cada push y los reportes quedan guardados como artefactos.
 
-## Tecnologías que usé
+Este proyecto parte de mi pre-entrega (los 10 casos de SauceDemo) y la amplía:
+reorganicé el código con Page Object Model, parametricé los tests con datos
+externos, sumé las pruebas de API y configuré la ejecución en GitHub Actions.
 
-- **Python** como lenguaje principal
-- **Pytest** para organizar y ejecutar los tests
-- **Selenium WebDriver** para manejar el navegador (Google Chrome)
-- **pytest-html** para generar el reporte HTML
-- **Git y GitHub** para el control de versiones
+## Tecnologías utilizadas
 
-## Cómo organicé el proyecto
+| Tecnología | Para qué la usé |
+|------------|-----------------|
+| **Python 3** | Lenguaje principal |
+| **Pytest** | Framework de testing: fixtures, parametrización, marcadores |
+| **Selenium WebDriver** | Automatizar el navegador (Google Chrome) |
+| **Requests** | Enviar las peticiones HTTP de las pruebas de API |
+| **pytest-html** | Generar el reporte HTML con las capturas incluidas |
+| **logging** (módulo de Python) | Registrar los pasos clave de cada ejecución |
+| **Git y GitHub** | Control de versiones, ramas por funcionalidad |
+| **GitHub Actions** | Ejecutar las pruebas automáticamente en cada push |
+
+## Estructura del proyecto
 
 ```
-pre-entrega-final/
+proyecto-final-automation-testing-barbara-garanton/
+├── .github/workflows/
+│   └── pruebas.yml            # Pipeline de GitHub Actions
+├── data/                      # Datos de prueba externos
+│   ├── login.json             # Usuarios válidos e inválidos para el login
+│   ├── checkout.csv           # Datos del comprador (válidos y con campos vacíos)
+│   ├── productos.json         # Productos a agregar al carrito
+│   └── api_posts.json         # Cuerpos para crear posts en la API
+├── pages/                     # Page Object Model (una clase por página)
+│   ├── base_page.py           # Clase base: esperas, clics, escritura, encabezado
+│   ├── login_page.py          # Página de login
+│   ├── inventory_page.py      # Catálogo de productos
+│   ├── cart_page.py           # Carrito de compras
+│   └── checkout_page.py       # Los 3 pasos del checkout
 ├── tests/
-│   └── test_saucedemo.py      # Mis casos de prueba
+│   ├── ui/                    # Pruebas de interfaz (Selenium)
+│   │   ├── test_login.py
+│   │   ├── test_inventario.py
+│   │   ├── test_carrito.py
+│   │   └── test_checkout.py
+│   └── api/                   # Pruebas de API (Requests)
+│       ├── conftest.py        # Fixture del cliente de API
+│       ├── test_posts_api.py
+│       └── test_encadenamiento_api.py
 ├── utils/
-│   └── selenium_helpers.py    # Funciones auxiliares (login, esperas, carrito)
+│   ├── config.py              # URLs, credenciales de prueba y tiempos de espera
+│   ├── driver_factory.py      # Crea Chrome (normal o headless)
+│   ├── api_client.py          # Cliente HTTP con logging y validación de estructura
+│   └── data_loader.py         # Lee los archivos JSON y CSV de data/
 ├── reports/
 │   ├── reporte.html           # Reporte HTML de la última ejecución
 │   ├── ejecucion.log          # Log de la última ejecución
 │   └── capturas/              # Capturas automáticas de los tests que fallan
-├── conftest.py                # Fixture del navegador y captura en fallos
-├── pytest.ini                 # Configuración de Pytest y de los logs
-├── requirements.txt           # Dependencias
+├── conftest.py                # Fixtures del navegador, capturas y hooks del reporte
+├── pytest.ini                 # Configuración de Pytest, reporte, marcadores y logs
+├── requirements.txt           # Dependencias con versiones fijas
 └── README.md
 ```
 
-Separé los tests de las funciones auxiliares para no repetir el mismo código de
-login en cada prueba. Así los tests quedan cortos y se entiende rápido qué valida
-cada uno.
+### Cómo funciona el Page Object Model
+
+Cada página del sitio tiene su propia clase en `pages/`, con sus **localizadores**
+y **métodos que representan acciones** (`iniciar_sesion()`, `agregar_producto_por_nombre()`,
+`ir_al_checkout()`, etc.). Los tests no tocan Selenium directamente: solo llaman
+a esos métodos y hacen las validaciones.
+
+Las acciones que se repiten en todas las páginas (esperas explícitas, clics,
+escribir, ir al carrito, cerrar sesión) están en `BasePage`, de la que heredan las
+demás. Además, los métodos que cambian de página devuelven el Page Object de la
+página siguiente, así un flujo se lee casi como una frase:
+
+```python
+carrito = inventario.ir_al_carrito()
+formulario = carrito.ir_al_checkout()
+resumen = formulario.continuar_al_resumen()
+confirmacion = resumen.finalizar_compra()
+```
+
+Si mañana cambia un botón del sitio, solo hay que corregir el localizador en su
+Page Object y todos los tests siguen funcionando.
+
+### Cómo agregar una prueba nueva
+
+- **Nuevos datos para un test existente:** agregar una entrada en el JSON o una
+  fila en el CSV de `data/`. No hace falta tocar código.
+- **Nueva página:** crear una clase en `pages/` que herede de `BasePage`.
+- **Nuevo test:** crear un archivo `test_*.py` en `tests/ui/` o `tests/api/` y usar
+  las fixtures `login_page`, `inventario` o `api`.
 
 ## Casos de prueba
 
-Diseñé 10 casos de prueba pensando como QA: no alcanza con probar que todo
-funciona cuando el usuario hace las cosas bien (casos positivos), también hay
-que comprobar que el sitio responda correctamente cuando algo sale mal (casos
-negativos). Por eso, además del login exitoso, probé qué pasa con una contraseña
-incorrecta, con un usuario bloqueado y con los campos vacíos.
+Total: **33 tests** (22 de UI y 11 de API). Cada caso parametrizado aparece en el
+reporte con su propio nombre, por ejemplo `test_login[usuario_bloqueado]`.
 
-Criterios que seguí:
+### Pruebas de UI - SauceDemo
 
-- **Un resultado esperado claro por caso.** Cada test tiene validaciones
-  (`assert`) específicas; ninguno se da por bueno solo porque "no dio error".
-- **Tests independientes.** Cada uno abre y cierra su propio navegador, así que
-  si uno falla los demás se ejecutan igual.
-- **Evidencia.** Cada ejecución deja un reporte, un log y capturas de los fallos.
+| ID | Test | Datos | Tipo | Resultado esperado |
+|----|------|-------|------|--------------------|
+| CP-01 | `test_login[usuario_estandar]` | `login.json` | Positivo | Entra al inventario, título "Products" |
+| CP-02 | `test_login[usuario_con_problemas]` | `login.json` | Positivo | Entra al inventario |
+| CP-03 | `test_login[password_incorrecta]` | `login.json` | Negativo | Error "Username and password do not match..." |
+| CP-04 | `test_login[usuario_inexistente]` | `login.json` | Negativo | Error "Username and password do not match..." |
+| CP-05 | `test_login[usuario_bloqueado]` | `login.json` | Negativo | Error "this user has been locked out" |
+| CP-06 | `test_login[campos_vacios]` | `login.json` | Negativo | Error "Username is required" |
+| CP-07 | `test_login[password_vacia]` | `login.json` | Negativo | Error "Password is required" |
+| CP-08 | `test_logout` | - | Positivo | Vuelve a la página de login |
+| CP-09 | `test_catalogo` | - | Positivo | Hay productos con nombre y precio; se ven menú, filtro y carrito |
+| CP-10 a CP-13 | `test_ordenar_catalogo[...]` | 4 opciones del filtro | Positivo | Nombres A-Z / Z-A y precios menor-mayor / mayor-menor quedan ordenados |
+| CP-14 a CP-16 | `test_agregar_productos_carrito[...]` | `productos.json` | Positivo | El contador muestra la cantidad agregada y el carrito tiene esos productos |
+| CP-17 | `test_quitar_producto_carrito` | - | Positivo | El carrito queda vacío y sin contador |
+| CP-18 | `test_checkout[datos_completos]` | `checkout.csv` | Positivo (flujo completo) | Resumen con el producto y "Thank you for your order!" |
+| CP-19 | `test_checkout[datos_completos_con_acentos]` | `checkout.csv` | Positivo (flujo completo) | Igual al anterior, con acentos en los datos |
+| CP-20 | `test_checkout[falta_nombre]` | `checkout.csv` | Negativo | Error "First Name is required" y no avanza |
+| CP-21 | `test_checkout[falta_apellido]` | `checkout.csv` | Negativo | Error "Last Name is required" y no avanza |
+| CP-22 | `test_checkout[falta_codigo_postal]` | `checkout.csv` | Negativo | Error "Postal Code is required" y no avanza |
 
-Precondición general: el sitio está disponible y, salvo en los casos de login,
-la sesión se inicia con `standard_user` / `secret_sauce`.
+### Pruebas de API - JSONPlaceholder
 
-| ID | Test | Tipo | Pasos principales | Resultado esperado |
-|----|------|------|-------------------|--------------------|
-| CP-01 | `test_login` | Positivo | Ingresar usuario y contraseña válidos y hacer clic en Login | Redirige a `/inventory.html`, con título "Swag Labs" y sección "Products" |
-| CP-02 | `test_login_password_incorrecta` | Negativo | Ingresar usuario válido con contraseña incorrecta | Muestra el error "Username and password do not match..." y no entra al inventario |
-| CP-03 | `test_login_usuario_bloqueado` | Negativo | Ingresar con `locked_out_user` | Muestra el error "this user has been locked out" y no entra al inventario |
-| CP-04 | `test_login_campos_vacios` | Negativo | Hacer clic en Login sin completar los campos | Muestra el error "Username is required" |
-| CP-05 | `test_logout` | Positivo | Abrir el menú y hacer clic en Logout | Vuelve a la página de login |
-| CP-06 | `test_catalogo` | Positivo | Entrar al inventario y revisar la página | Título "Products", hay productos visibles, el primero tiene nombre y precio, y están el menú, el filtro y el carrito |
-| CP-07 | `test_ordenar_por_precio` | Positivo | Elegir en el filtro "precio de menor a mayor" | Los precios quedan ordenados de menor a mayor |
-| CP-08 | `test_agregar_producto_carrito` | Positivo | Agregar el primer producto y entrar al carrito | El contador pasa a 1 y el producto aparece en el carrito |
-| CP-09 | `test_quitar_producto_carrito` | Positivo | Agregar un producto, entrar al carrito y quitarlo | El carrito queda vacío y desaparece el contador |
-| CP-10 | `test_checkout` | Positivo | Agregar un producto, completar el formulario, continuar y finalizar | El resumen muestra el producto y aparece "Thank you for your order!" |
+| ID | Test | Método | Validaciones |
+|----|------|--------|--------------|
+| API-01 | `test_obtener_post_existente` | GET | Código 200, `Content-Type` JSON, estructura y tipos de los campos |
+| API-02 | `test_listar_posts_de_un_usuario` | GET con parámetros | Código 200, 10 posts, todos del usuario pedido |
+| API-03 | `test_obtener_post_inexistente` | GET | Código 404 y cuerpo vacío (negativo) |
+| API-04 a API-06 | `test_crear_post[...]` | POST (`api_posts.json`) | Código 201, devuelve lo enviado y el `id` nuevo |
+| API-07 | `test_actualizar_post` | PUT | Código 200 y cuerpo actualizado |
+| API-08 | `test_eliminar_post` | DELETE | Código 200 y cuerpo vacío |
+| API-09 | `test_endpoint_inexistente` | GET | Código 404 (negativo) |
+| API-10 | `test_flujo_post_autor_y_comentarios` | GET encadenados | Post → su autor (con el `userId` recibido) → sus comentarios |
+| API-11 | `test_flujo_usuario_crear_y_eliminar_post` | GET → POST → GET → DELETE | Busca un usuario, crea un post con su `id`, lista sus posts y borra uno |
 
-Resultado de la última ejecución: **10 de 10 casos aprobados** (ver
-`reports/reporte.html`).
+> JSONPlaceholder es una API de práctica: responde a POST, PUT y DELETE como si
+> guardara los cambios, pero no los persiste. Por eso en los flujos encadenados
+> uso los datos devueltos en cada paso (como el `id` del usuario) para armar la
+> petición siguiente, en lugar de volver a consultar el post recién creado.
 
-## Lo que más me costó: el checkout
+### Criterios que seguí
 
-El checkout fue la parte que más se me complicó. El test llegaba al formulario y
-completaba los datos, pero al hacer clic en `Continue` la página no avanzaba al
-resumen de compra: la URL seguía siendo `checkout-step-one.html`. Lo confuso es
-que en un momento el test figuraba como `PASSED`, pero solo porque no tenía
-ninguna validación que comprobara que realmente había avanzado.
-
-El problema no estaba en el sitio sino en el navegador: Chrome mostraba su aviso
-de "contraseña filtrada" (porque `secret_sauce` es una clave pública) y esa
-ventana tapaba la página y bloqueaba los clics. Lo resolví desactivando el gestor
-de contraseñas de Chrome en las opciones del navegador, dentro de
-`utils/selenium_helpers.py`.
-
-De esto me llevo dos aprendizajes:
-
-- Que un test diga `PASSED` no significa que la funcionalidad ande bien. Si no
-  hay una validación clara, el resultado no dice nada.
-- Cuando algo falla, conviene mirar también el entorno (el navegador, en este
-  caso) y no solo el código del test.
+- **Casos positivos y negativos:** no alcanza con probar que todo anda cuando se
+  hace bien; también verifico que el sistema responda correctamente ante errores.
+- **Tests independientes:** cada test de UI abre y cierra su propio navegador, y
+  cada test de API usa su propio cliente. Si uno falla, los demás se ejecutan igual.
+- **Validaciones claras:** ningún test se da por bueno solo porque "no dio error";
+  todos tienen `assert` concretos.
 
 ## Instalación de dependencias
 
-Requisitos previos: tener instalados Python 3 y Google Chrome.
+Requisitos previos: tener instalados **Python 3.10 o superior**, **Google Chrome**
+y **Git**. No hace falta descargar el ChromeDriver: Selenium lo gestiona solo.
 
 ```bash
-git clone https://github.com/BarbaraGaranton/pre-entrega-automation-testing-barbara-garanton.git
-cd pre-entrega-automation-testing-barbara-garanton
+git clone https://github.com/BarbaraGaranton/proyecto-final-automation-testing-barbara-garanton.git
+cd proyecto-final-automation-testing-barbara-garanton
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
@@ -117,30 +182,109 @@ En Linux o Mac el entorno virtual se activa con `source .venv/bin/activate`.
 
 ## Cómo ejecutar las pruebas
 
-Para ejecutar todos los tests:
+Todas las pruebas (el reporte HTML y el log se generan solos):
 
 ```bash
-pytest -v
+pytest
 ```
 
-Para ejecutarlos y generar el reporte HTML:
+Solo las pruebas de API o solo las de UI:
 
 ```bash
-pytest -v --html=reports/reporte.html --self-contained-html
+pytest -m api
+pytest -m ui
 ```
 
-Para ejecutar un solo test:
+Solo las pruebas rápidas de los flujos principales:
 
 ```bash
-pytest -v tests/test_saucedemo.py::test_login
+pytest -m smoke
 ```
 
-## Reportes y evidencias
+Un archivo o un caso puntual:
 
-- **Reporte HTML:** queda en `reports/reporte.html`.
-- **Logs de ejecución:** se ven en la consola y se guardan en `reports/ejecucion.log`.
-- **Capturas de pantalla:** si un test falla, se guarda sola una captura en
-  `reports/capturas/` y también se adjunta al reporte HTML.
+```bash
+pytest tests/ui/test_login.py
+pytest "tests/ui/test_login.py::test_login[usuario_bloqueado]"
+```
+
+Sin abrir la ventana del navegador (modo headless, como en GitHub Actions):
+
+```bash
+# Windows (PowerShell)
+$env:HEADLESS="1"; pytest
+# Linux / Mac
+HEADLESS=1 pytest
+```
+
+## Cómo interpretar los reportes
+
+### Reporte HTML (`reports/reporte.html`)
+
+Se genera en cada ejecución y se abre con cualquier navegador.
+
+- **Resumen arriba:** cantidad de tests ejecutados, aprobados (*Passed*),
+  fallados (*Failed*), omitidos y la duración total. Se puede hacer clic en cada
+  estado para filtrar la tabla.
+- **Tabla de resultados:** una fila por test con su estado, nombre y duración.
+  Los tests parametrizados muestran entre corchetes el caso de datos usado.
+- **Detalle de cada test:** al hacer clic en una fila se despliega el log de ese
+  test y, si falló, el error del `assert` (qué se esperaba y qué se obtuvo).
+- **Capturas:** en los tests de UI que fallan, la captura de pantalla del momento
+  del error aparece dentro del detalle del test.
+
+### Log (`reports/ejecucion.log`)
+
+Registra paso a paso cada ejecución con fecha, hora y nivel:
+
+```
+2026-11-24 16:50:01 [INFO] conftest: ========== INICIO: tests/ui/test_login.py::test_login[usuario_bloqueado] ==========
+2026-11-24 16:50:05 [INFO] pages.login_page: Iniciando sesión con el usuario 'locked_out_user'
+2026-11-24 16:50:06 [INFO] pages.login_page: Mensaje de error mostrado: Epic sadface: Sorry, this user has been locked out.
+2026-11-24 16:50:06 [INFO] conftest: Resultado de test_login[usuario_bloqueado]: PASÓ (2.31 s)
+```
+
+En las pruebas de API queda registrado el método, la URL, el cuerpo enviado, el
+código de respuesta, el tiempo en milisegundos y el comienzo de la respuesta. Las
+líneas `[ERROR]` marcan los tests fallidos y dónde se guardó su captura.
+
+### Capturas de pantalla (`reports/capturas/`)
+
+Cuando un test de UI falla se guarda automáticamente una captura con el nombre del
+test y la fecha/hora, por ejemplo `test_checkout_falta_nombre_20261124_165012.png`.
+
+### Reportes en GitHub Actions
+
+En cada push el workflow `Pruebas automatizadas` ejecuta las pruebas de API y de UI
+(Chrome en modo headless). Para ver los resultados: pestaña **Actions** del
+repositorio → elegir la ejecución → sección **Artifacts** → descargar
+`reportes-de-pruebas`, que contiene los reportes HTML, el log y las capturas.
+
+## Control de versiones
+
+Desarrollé cada funcionalidad en su propia rama y luego la fusioné con `main`:
+
+| Rama | Contenido |
+|------|-----------|
+| `feature/page-object-model` | Clases de páginas y refactor de los tests de UI |
+| `feature/datos-de-prueba` | Archivos JSON/CSV y parametrización |
+| `feature/pruebas-api` | Cliente de API y pruebas con Requests |
+| `feature/ci-reportes` | GitHub Actions, reportes y documentación |
+
+## Lo que más me costó
+
+**El checkout (de la pre-entrega).** El test llegaba al formulario pero al hacer
+clic en `Continue` no avanzaba. El problema no estaba en el sitio sino en Chrome:
+su aviso de "contraseña filtrada" (porque `secret_sauce` es una clave pública)
+tapaba la página. Lo resolví desactivando el gestor de contraseñas en las opciones
+del navegador (`utils/driver_factory.py`). Aprendí que un `PASSED` sin validaciones
+no dice nada, y que cuando algo falla también hay que mirar el entorno.
+
+**Las pruebas de API encadenadas.** Al principio quise crear un post y después
+consultarlo, pero JSONPlaceholder no guarda los recursos nuevos y el GET devolvía
+404. Leyendo la documentación entendí que es una API simulada, así que armé los
+flujos encadenados con datos que sí existen y uso el resultado de cada petición
+para construir la siguiente.
 
 ## Autora
 
