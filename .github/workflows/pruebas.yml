@@ -1,0 +1,48 @@
+# Ejecuta todas las pruebas automatizadas en cada push o pull request
+# y guarda el reporte HTML, el log y las capturas como artefactos.
+name: Pruebas automatizadas
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: # permite ejecutarlo a mano desde la pestaña Actions
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar pruebas de API
+        run: pytest -m api --html=reports/reporte_api.html --self-contained-html
+
+      - name: Ejecutar pruebas de UI (Chrome headless)
+        if: always()
+        env:
+          HEADLESS: "1"
+        run: pytest -m ui --html=reports/reporte_ui.html --self-contained-html --log-file=reports/ejecucion_ui.log
+
+      - name: Guardar reportes como artefactos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-de-pruebas
+          path: |
+            reports/*.html
+            reports/*.log
+            reports/capturas/
+          retention-days: 30
