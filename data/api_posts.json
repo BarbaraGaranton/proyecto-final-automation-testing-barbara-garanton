@@ -1,0 +1,26 @@
+[
+  {
+    "id": "post_simple",
+    "cuerpo": {
+      "title": "Mi primer post automatizado",
+      "body": "Creado desde el framework de QA Automation",
+      "userId": 1
+    }
+  },
+  {
+    "id": "post_con_acentos",
+    "cuerpo": {
+      "title": "Prueba de caracteres: ñandú, acción, pingüino",
+      "body": "Verifico que la API devuelva bien los caracteres especiales",
+      "userId": 5
+    }
+  },
+  {
+    "id": "post_texto_largo",
+    "cuerpo": {
+      "title": "Post con un cuerpo extenso",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "userId": 10
+    }
+  }
+]
